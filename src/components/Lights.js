@@ -10,9 +10,9 @@ const Lights = () => {
     }
 
     const lightConfigurations = Array(30).fill(0).map(() => ({
-        position: [getRandomPosition(-250, 250), 100, getRandomPosition(0, 1000 )],
+        position: [getRandomPosition(-500, 500), 100, getRandomPosition(0, 1000 )],
         duration: getRandomPosition(3000, 20000),
-        intensity: Math.random() * (0.02 - 0.002) + 0.002,
+        intensity: Math.random() * (0.002 - 0.002) + 0.002,
         color: "#0696FF"
     }));
 
@@ -26,7 +26,7 @@ const Lights = () => {
                     position={`${config.position[0]} ${config.position[1]} ${config.position[2]}`}
                     intensity={config.intensity}
                     animation={`property: position; to: 0 150 ${distanceConnect}; dur: ${config.duration}; loop: true; easing: easeInQuad;`}
-                    animation__2={`property: intensity; to: 0.001; dur: ${config.duration - 50}; delay: 0; loop: true; easing: linear;`}
+                    animation__2={`property: intensity; to: 0.001; dur: ${config.duration - 80}; delay: 0; loop: true; easing: linear;`}
                 />
             ))}
         </>

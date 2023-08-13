@@ -9,10 +9,10 @@ const Lights = () => {
         return Math.floor(Math.random() * (max - min + 1) + min);
     }
 
-    const lightConfigurations = Array(35).fill(0).map(() => ({
+    const lightConfigurations = Array(15).fill(0).map(() => ({
         position: [getRandomPosition(-150, 150), 100, getRandomPosition(-100, 5)],
-        duration: getRandomPosition(2000, 10000),
-        intensity: Math.random() * (0.015 - 0.002 ) + 0.002,
+        duration: getRandomPosition(3000, 20000),
+        intensity: Math.random() * (0.005 - 0.002 ) + 0.002,
         color: "#0696FF"
     }));
 

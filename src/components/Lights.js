@@ -12,7 +12,7 @@ const Lights = () => {
     const lightConfigurations = Array(15).fill(0).map(() => ({
         position: [getRandomPosition(-150, 150), 100, getRandomPosition(-100, 5)],
         duration: getRandomPosition(3000, 20000),
-        intensity: Math.random() * (0.005 - 0.002 ) + 0.002,
+        intensity: Math.random() * (0.005 - 0.002) + 0.002,
         color: "#0696FF"
     }));
 
@@ -20,6 +20,7 @@ const Lights = () => {
         <>
             {lightConfigurations.map((config, index) => (
                 <a-light
+                    id="dataLights"
                     key={index}
                     color={config.color}
                     position={`${config.position[0]} ${config.position[1]} ${config.position[2]}`}

@@ -1,20 +1,20 @@
 import React from 'react';
 import 'aframe';
 
-import Chair from '../assets/gaming_rocker_chair.glb'
+import Avatar from '../assets/DS_avatar.glb'
 
 const Person = () => {
 
     return (
         <>
-            <a-light target="#Chair" position="0 2 -5" color="red" />
+            <a-light id="avatarLight" target="#avatar" position="0 0 0"  light="target: #avatar; intensity: 1" color="red"></a-light>
             <a-entity
-                id="Chair"
-                position="0 1 -5"
-                rotation="0 120 0"
-                scale="3 3 3"
-                roughness="1" metalness="1"
-                gltf-model={Chair}
+                id="avatar"
+                position="0 0 -5"
+                rotation="0 160 0"
+                scale="1 1 1"
+                gltf-model={Avatar}
+                roughness="12" metalness="2"
             />
         </>
     );

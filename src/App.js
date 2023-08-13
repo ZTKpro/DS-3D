@@ -9,9 +9,9 @@ const AframeScene = () => {
   return (
     <a-scene>
       <Lights />
-      <a-light id="main" target="#box" position="0 10 -15" />
-      <a-box id="box" position="0 1 -17" roughness="1" metalness="1" ></a-box>
-      <a-plane id="floor" opacity="0.6" rotation="-90 0 0" width="1000" height="1000" repeat="2000 2000" src={floor} roughness="0" metalness="1" />
+      <a-light id="main" target="#box" position="0 10 -2" />
+      <a-box id="box" position="0 0 -10" roughness="1" metalness="1" ></a-box>
+      <a-plane id="floor" opacity="0.6" rotation="-90 0 0" width="1000" height="1000" repeat="2000 2000" src={floor} roughness="0.1" metalness="1" />
       <a-sky color="black"></a-sky>
     </a-scene>
   );

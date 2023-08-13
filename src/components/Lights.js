@@ -3,13 +3,16 @@ import 'aframe';
 
 const Lights = () => {
 
+    const distanceConnect = `-400`
+
     const getRandomPosition = (min, max) => {
         return Math.floor(Math.random() * (max - min + 1) + min);
     }
 
-    const lightConfigurations = Array(36).fill(0).map(() => ({
-        position: [getRandomPosition(-500, 500), 100, getRandomPosition(-17, 100)],
-        duration: getRandomPosition(3000, 5000),
+    const lightConfigurations = Array(35).fill(0).map(() => ({
+        position: [getRandomPosition(-150, 150), 100, getRandomPosition(-100, 5)],
+        duration: getRandomPosition(2000, 10000),
+        intensity: Math.random() * (0.015 - 0.002 ) + 0.002,
         color: "#0696FF"
     }));
 
@@ -20,9 +23,10 @@ const Lights = () => {
                     key={index}
                     color={config.color}
                     position={`${config.position[0]} ${config.position[1]} ${config.position[2]}`}
-                    intensity="0.005"
-                    animation={`property: position; to: 0 100 -200; dur: ${config.duration}; loop: true; easing: easeOutQuad;`}>
-                </a-light>
+                    intensity={config.intensity}
+                    animation={`property: position; to: 0 150 ${distanceConnect}; dur: ${config.duration}; loop: true; easing: easeInQuad;`}
+                    animation__2={`property: intensity; to: 0; dur: ${config.duration - 50}; delay: 0; loop: true; easing: linear;`}
+                />
             ))}
         </>
     );

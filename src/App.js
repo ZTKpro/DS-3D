@@ -12,7 +12,7 @@ const AframeScene = () => {
       <Lights />
       <Person />
       <a-light id="main"position="0 2 0"/>
-      <a-plane id="floor" rotation="-90 0 0" width="1000" height="1000" repeat="2000 2000" src={floor} roughness="0.1" metalness="1" />
+      <a-plane id="floor" rotation="-90 0 0" width="1000" height="1000" repeat="2000 2000" src={floor} roughness="0.1" metalness="0.9" />
       <a-sky color="black"></a-sky>
     </a-scene>
   );

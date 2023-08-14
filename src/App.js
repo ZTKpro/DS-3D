@@ -1,5 +1,6 @@
 import React from 'react';
 import 'aframe';
+import 'aframe-extras';
 
 import floor from './assets/floor.png'
 import Lights from './components/Lights';

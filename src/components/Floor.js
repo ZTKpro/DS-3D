@@ -11,7 +11,7 @@ const Floor = () => {
 
   return (
     <Plane args={[100, 100]} rotation={[-Math.PI / 2, 0, 0]}>
-      <meshStandardMaterial map={texture} metalness={0.7} roughness={0.6} />
+      <meshStandardMaterial map={texture} metalness={1} roughness={0.2} />
     </Plane>
   );
 };

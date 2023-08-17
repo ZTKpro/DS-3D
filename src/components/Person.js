@@ -30,9 +30,8 @@ const Distanser = () => {
   const ref = useRef()
 
   useFrame((state) => {
-    ref.current.rotation.y += 0.02
-    ref.current.position.x = 1.5 * Math.sin(state.clock.getElapsedTime())
-    ref.current.position.z = 1.5 * Math.cos(state.clock.getElapsedTime())
+    ref.current.position.x = 1.3 * Math.sin(state.clock.getElapsedTime())
+    ref.current.position.z = 1.3 * Math.cos(state.clock.getElapsedTime())
   })
   return <Sphere ref={ref} position={[0, 1.2, -1.2]} scale={[0.01, 0.01, 0.01]}>
     <meshBasicMaterial color="red" />

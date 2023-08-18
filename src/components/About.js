@@ -1,6 +1,5 @@
-import React, { useRef } from "react";
-import { useFrame } from "@react-three/fiber";
-import { useGLTF, Box, useTexture } from "@react-three/drei";
+import React from "react";
+import { Box, useTexture } from "@react-three/drei";
 
 const Photos = () => {
     const photo0 = useTexture("assets/img/photo.jpg");

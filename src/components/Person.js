@@ -1,31 +1,56 @@
 import React, { useRef } from "react";
 import { useFrame } from '@react-three/fiber';
-import { useGLTF, Box, Sphere } from "@react-three/drei";
+import { useGLTF, Box, useTexture, useVideoTexture } from "@react-three/drei";
 
-const monitors = [
-  { rotation: [0, 0, 0], position: [0.5, 1.8, 1], scale: [1, 0.5, 0.01] },
-  { rotation: [0, 0, 0], position: [-0.51, 1.8, 1], scale: [1, 0.5, 0.01] },
-  { rotation: [0, 0, 0], position: [0, 1.39, 1], scale: [1, 0.3, 0.01] },
-  { rotation: [0, 0, 0], position: [-0.76, 1.39, 1], scale: [0.5, 0.3, 0.01] },
-  { rotation: [0, 0, 0], position: [0.75, 1.39, 1], scale: [0.49, 0.3, 0.01] },
-];
+
 
 const Monitors = () => {
+  const texture = useTexture("assets/keyboard.png");
+  const stock = useVideoTexture("assets/stock.mp4")
+  const code = useVideoTexture("assets/code.mp4")
+
   return (
     <>
-      {monitors.map((monitor) => (
-        <Box
-          key={monitor.position.join(",")}
-          rotation={monitor.rotation}
-          position={monitor.position}
-          scale={monitor.scale}
-        >
-          <meshBasicMaterial color="#0696FF" transparent opacity={0.5} />
-        </Box>
-      ))}
+      {/* left top panel */}
+      <Box
+        rotation={[0, 0, 0]}
+        position={[0.5, 1.8, 1]}
+        scale={[1, 0.5, 0.01]}
+      >
+        <meshBasicMaterial map={stock} transparent opacity={0.8} />
+      </Box>
+      {/* right top panel */}
+      <Box
+        rotation={[0, 0, 0]}
+        position={[-0.51, 1.8, 1]}
+        scale={[1, 0.5, 0.01]}
+      >
+        <meshBasicMaterial map={code} transparent opacity={0.8} />
+      </Box>
+      {/* keyboard */}
+      <Box
+        rotation={[80, 0, 0]}
+        position={[0, 1.15, 0.5]}
+        scale={[0.55, 0.25, 0.01]}
+      >
+        <meshBasicMaterial map={texture} transparent opacity={0.5} />
+      </Box>
     </>
   );
 };
+
+
+// const Distanser = () => {
+//   const ref = useRef()
+
+//   useFrame((state) => {
+//     ref.current.position.x = 1.3 * Math.sin(state.clock.getElapsedTime())
+//     ref.current.position.z = 1.3 * Math.cos(state.clock.getElapsedTime())
+//   })
+//   return <Sphere ref={ref} position={[0, 1.2, -1.2]} scale={[0.01, 0.01, 0.01]}>
+//     <meshBasicMaterial color="red" />
+//   </Sphere>
+// }
 
 const Person = () => {
   const globeRef = useRef();

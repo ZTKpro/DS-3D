@@ -3,9 +3,11 @@ import { useFrame } from '@react-three/fiber';
 import { useGLTF, Box, Sphere } from "@react-three/drei";
 
 const monitors = [
-  { rotation: [0, 10, 0], position: [1, 1.5, 0.7], scale: [1, 0.6, 0.01] },
-  { rotation: [0, 0, 0], position: [0, 1.5, 1], scale: [1, 0.6, 0.01] },
-  { rotation: [0, -10, 0], position: [-1, 1.5, 0.7], scale: [1, 0.6, 0.01] },
+  { rotation: [0, 0, 0], position: [0.5, 1.8, 1], scale: [1, 0.5, 0.01] },
+  { rotation: [0, 0, 0], position: [-0.51, 1.8, 1], scale: [1, 0.5, 0.01] },
+  { rotation: [0, 0, 0], position: [0, 1.39, 1], scale: [1, 0.3, 0.01] },
+  { rotation: [0, 0, 0], position: [-0.76, 1.39, 1], scale: [0.5, 0.3, 0.01] },
+  { rotation: [0, 0, 0], position: [0.75, 1.39, 1], scale: [0.49, 0.3, 0.01] },
 ];
 
 const Monitors = () => {
@@ -25,27 +27,23 @@ const Monitors = () => {
   );
 };
 
-
-const Distanser = () => {
-  const ref = useRef()
-
-  useFrame((state) => {
-    ref.current.position.x = 1.3 * Math.sin(state.clock.getElapsedTime())
-    ref.current.position.z = 1.3 * Math.cos(state.clock.getElapsedTime())
-  })
-  return <Sphere ref={ref} position={[0, 1.2, -1.2]} scale={[0.01, 0.01, 0.01]}>
-    <meshBasicMaterial color="red" />
-  </Sphere>
-}
-
 const Person = () => {
+  const globeRef = useRef();
+
   const gltf = useGLTF("assets/avatar.glb");
+  const globe = useGLTF("assets/globe.glb");
+
+  useFrame(() => {
+    if (globeRef.current) {
+      globeRef.current.rotation.y += 0.01;
+    }
+  });
 
   return (
     <>
       <primitive object={gltf.scene} />
+      <primitive ref={globeRef} object={globe.scene} position={[-0.5, 1.2, 0.5]} scale={[0.2, 0.2, 0.2]} />
       <Monitors />
-      <Distanser />
     </>
   );
 };

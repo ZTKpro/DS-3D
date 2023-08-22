@@ -4,10 +4,10 @@ import {
 } from "@react-three/drei";
 
 
-const Person = () => {
+const Person = ({ rotation }) => {
   const avatar = useGLTF("assets/model/avatar.glb");
 
-  return <primitive object={avatar.scene} />
+  return <primitive object={avatar.scene} rotation={rotation} />
 };
 
 export default Person;

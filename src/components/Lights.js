@@ -35,7 +35,7 @@ const Light = ({ lightParams }) => {
 
 const Lights = () => {
 
-    const lightsArray = new Array(15).fill(null).map(() => ({
+    const lightsArray = new Array(30).fill(null).map(() => ({
         intensity: 0.1,
         position: [RandNum(-200, 200), 0.1, RandNum(-200, 200)],
         color: "#0696FF"

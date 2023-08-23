@@ -16,9 +16,26 @@ const Monitors = ({ setPersonRot }) => {
     camera.position.set(3, 3, -3);
   }, []);
 
+  let angle = 0;
+  let isMouseDown = false;
+  let lastMouseDown = Date.now();
+
+  window.addEventListener("mousedown", () => {
+    isMouseDown = true;
+    lastMouseDown = Date.now();
+  });
+  window.addEventListener("mouseup", () => {
+    isMouseDown = false;
+  });
+
   useFrame(() => {
-    if (globeRef.current) {
-      globeRef.current.rotation.y += 0.01;
+    if (!isMouseDown && Date.now() - lastMouseDown > 15000) {
+      angle += 0.007;
+      camera.position.x = Math.cos(angle);
+      camera.position.z = Math.sin(angle);
+      if (globeRef.current) {
+        globeRef.current.rotation.y += 0.01;
+      }
     }
   });
 

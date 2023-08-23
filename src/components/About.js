@@ -15,6 +15,15 @@ const Photos = () => {
 
   const boxRefs = [boxRef1, boxRef2, boxRef3];
 
+  let opacity = 0;
+  useFrame((state, delta) => {
+    opacity += delta * 0.2;
+    if (opacity > 1) opacity = 1;
+    boxRefs.forEach((ref) => {
+      ref.current.material.opacity = opacity;
+    });
+  });
+
   return (
     <>
       {photos.map((photo, index) => (

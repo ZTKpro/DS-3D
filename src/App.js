@@ -3,7 +3,7 @@ import { Canvas } from "@react-three/fiber";
 import { OrbitControls } from "@react-three/drei";
 import * as THREE from "three";
 
-import Hub from "./components/Hub";
+import Hud from "./components/Hud";
 import Person from "./components/Person";
 import Floor from "./components/Floor";
 import Lights from "./components/Lights";
@@ -31,7 +31,7 @@ function App() {
 
   return (
     <>
-      <Hub setNav={(item) => setRouter(item)} />
+      <Hud setNav={(item) => setRouter(item)} />
       <Canvas
         style={{ width: "100vw", height: "100vh", background: "black" }}
         camera={{ position: [-3, 3, -3] }}

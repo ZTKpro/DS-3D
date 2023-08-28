@@ -1,19 +1,7 @@
 import React from "react";
 import styled, { keyframes } from "styled-components";
 
-const animatedBorder = keyframes`
-    0% {
-        border-image: linear-gradient(to right, rgba(78, 249, 254, 0.5), rgba(6, 150, 255, 0.5)) 1;
-    }
-    50% {
-        border-image: linear-gradient(to left, rgba(78, 249, 254, 0.5), rgba(6, 150, 255, 0.5)) 1;
-    }
-     100% {
-        border-image: linear-gradient(to right, rgba(78, 249, 254, 0.5), rgba(6, 150, 255, 0.5)) 1;
-    }
-`;
-
-const StyledDiv = styled.div`
+const StyledNav = styled.nav`
   padding: 20px;
   position: absolute;
   left: 0;
@@ -24,14 +12,13 @@ const StyledDiv = styled.div`
   display: flex;
   justify-content: center;
   align-items: center;
-`;
+  p {
+    margin: 0px 10px;
+    cursor: pointer;
 
-const StyledP = styled.p`
-  margin: 0px 10px;
-  cursor: pointer;
-
-  &:hover {
-    opacity: 0.9;
+    &:hover {
+      opacity: 0.9;
+    }
   }
 `;
 
@@ -47,8 +34,6 @@ const StyledPersonInfo = styled.div`
   border-top: 1px solid #4ef9fe20;
   border-bottom: 1px solid #4ef9fe20;
 
-  animation: ${animatedBorder}10s linear infinite;
-
   p {
     color: #4ef9fe;
     font-family: "Orbitron", sans-serif;
@@ -60,10 +45,86 @@ const StyledPersonInfo = styled.div`
   }
 `;
 
+const StyledPorfolio = styled.div`
+  position: absolute;
+  z-index: 10;
+  top: 1vh;
+  left: 0.5vw;
+  height: 98vh;
+  width: 98.5vw;
+  background-color: #4ef9fe15;
+  border-top: 1px solid #4ef9fe80;
+  border-bottom: 1px solid #4ef9fe80;
+`;
+
+const StyledPorfolioNav = styled.div`
+  height: 50px;
+  width: 100%;
+  background-color: #4ef9fe15;
+  border-top: 1px solid #4ef9fe80;
+  border-bottom: 1px solid #4ef9fe80;
+  display: flex;
+  align-items: center;
+
+  p {
+    margin: 0 25px;
+    cursor: pointer;
+  }
+`;
+
+const StyledPorfolioWrapper = styled.div`
+  display: flex;
+  gap: 20px;
+  padding: 20px;
+`;
+
+const StyledPorfolioItem = styled.div`
+  cursor: pointer;
+  background-color: #4ef9fe15;
+  padding: 20px;
+  border: 1px solid #4ef9fe80;
+
+  p {
+    padding: 10px;
+  }
+`;
+
 const Hud = ({ setNav }) => {
+  const dataPorfolio = [
+    {
+      name: "Hudson",
+      tech: "Js",
+    },
+    {
+      name: "John",
+      tech: "Python",
+    },
+    {
+      name: "Jane",
+      tech: "React",
+    },
+  ];
+
+  const dataPorfolioFilters = ["Back", "AI", "Blockchain", "3D"];
+
   return (
-    <StyledDiv>
-      <StyledPersonInfo>
+    <>
+      {/* <StyledPorfolio>
+        <StyledPorfolioNav>
+          {dataPorfolioFilters.map((item) => (
+            <p className="active">{item}</p>
+          ))}
+        </StyledPorfolioNav>
+        <StyledPorfolioWrapper>
+          {dataPorfolio.map((item) => (
+            <StyledPorfolioItem className="active" key={item.name}>
+              <p>{item.name}</p>
+              <p>{item.tech}</p>
+            </StyledPorfolioItem>
+          ))}
+        </StyledPorfolioWrapper>
+      </StyledPorfolio> */}
+      {/* <StyledPersonInfo>
         <h2>Personal Information</h2>
         <p>
           <strong>Name:</strong> Damian
@@ -78,13 +139,14 @@ const Hud = ({ setNav }) => {
         sth
         <p>Interests</p>
         sth
-      </StyledPersonInfo>
-
-      <StyledP onClick={() => setNav("ABOUT")}> About </StyledP>
-      <StyledP onClick={() => setNav("PORTFOLIO")}> Portfolio </StyledP>
-      <StyledP onClick={() => setNav("CONTACT")}> Contact </StyledP>
-      <StyledP onClick={() => setNav("DREAMS")}> Dreams </StyledP>
-    </StyledDiv>
+      </StyledPersonInfo> */}
+      <StyledNav>
+        <p onClick={() => setNav("ABOUT")}> About </p>
+        <p onClick={() => setNav("PORTFOLIO")}> Portfolio </p>
+        <p onClick={() => setNav("CONTACT")}> Contact </p>
+        <p onClick={() => setNav("DREAMS")}> Dreams </p>
+      </StyledNav>
+    </>
   );
 };
 

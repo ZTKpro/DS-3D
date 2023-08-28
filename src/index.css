@@ -8,5 +8,12 @@
   text-shadow: -1px -1px #0696ff;
   line-height: 0.8rem;
   letter-spacing: 0.2rem;
-  text-transform: uppercase;
+}
+
+.active {
+  opacity: 0.8;
+}
+
+.active:hover {
+  opacity: 1;
 }

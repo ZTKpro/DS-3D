@@ -89,7 +89,7 @@ const StyledPorfolioItem = styled.div`
   }
 `;
 
-const Hud = ({ setNav }) => {
+const Hud = ({ setNav, router }) => {
   const dataPorfolio = [
     {
       name: "Hudson",
@@ -109,42 +109,50 @@ const Hud = ({ setNav }) => {
 
   return (
     <>
-      {/* <StyledPorfolio>
-        <StyledPorfolioNav>
-          {dataPorfolioFilters.map((item) => (
-            <p className="active">{item}</p>
-          ))}
-        </StyledPorfolioNav>
-        <StyledPorfolioWrapper>
-          {dataPorfolio.map((item) => (
-            <StyledPorfolioItem className="active" key={item.name}>
-              <p>{item.name}</p>
-              <p>{item.tech}</p>
-            </StyledPorfolioItem>
-          ))}
-        </StyledPorfolioWrapper>
-      </StyledPorfolio> */}
-      {/* <StyledPersonInfo>
-        <h2>Personal Information</h2>
-        <p>
-          <strong>Name:</strong> Damian
-        </p>
-        <p>
-          <strong>Age:</strong> 28
-        </p>
-        <p>
-          <strong>Location:</strong> Warsaw, Poland
-        </p>
-        <p>Skills</p>
-        sth
-        <p>Interests</p>
-        sth
-      </StyledPersonInfo> */}
+      {router === "PORFOLIO" && (
+        <StyledPorfolio>
+          <StyledPorfolioNav>
+            {dataPorfolioFilters.map((item) => (
+              <p className="active" key={item}>
+                {item}
+              </p>
+            ))}
+          </StyledPorfolioNav>
+          <StyledPorfolioWrapper>
+            {dataPorfolio.map((item) => (
+              <StyledPorfolioItem className="active" key={item.name}>
+                <p>{item.name}</p>
+                <p>{item.tech}</p>
+              </StyledPorfolioItem>
+            ))}
+          </StyledPorfolioWrapper>
+        </StyledPorfolio>
+      )}
+
+      {router === "ABOUT" && (
+        <StyledPersonInfo>
+          <h2>Personal Information</h2>
+          <p>
+            <strong>Name:</strong> Damian
+          </p>
+          <p>
+            <strong>Age:</strong> 28
+          </p>
+          <p>
+            <strong>Location:</strong> Warsaw, Poland
+          </p>
+          <p>Skills</p>
+          sth
+          <p>Interests</p>
+          sth
+        </StyledPersonInfo>
+      )}
       <StyledNav>
         <p onClick={() => setNav("ABOUT")}> About </p>
         <p onClick={() => setNav("PORTFOLIO")}> Portfolio </p>
         <p onClick={() => setNav("CONTACT")}> Contact </p>
         <p onClick={() => setNav("DREAMS")}> Dreams </p>
+        <p onClick={() => setNav("DREAMS")}> Pl </p>
       </StyledNav>
     </>
   );

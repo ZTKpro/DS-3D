@@ -1,10 +1,10 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import { useFrame, useThree } from "@react-three/fiber";
-import { Box, useTexture } from "@react-three/drei";
+import * as THREE from "three";
 
 import Particles from "./Particles";
 
-const About = ({ setPersonRot, setCameraPos }) => {
+const About = ({ setPersonRot, router }) => {
   const { camera } = useThree();
 
   useEffect(() => {
@@ -13,13 +13,14 @@ const About = ({ setPersonRot, setCameraPos }) => {
   }, []);
 
   useFrame((state, delta) => {
-    // if (camera.position.z > -1) {
-    // camera.position.z -= delta / 3;
-    camera.position.z -= delta;
-    // }
+    if (camera.position.z > -1) {
+      camera.position.z -= delta / 3;
+    }
   });
 
-  return <Particles />;
+  return <>
+  <Particles />
+  </>;
 };
 
 export default About;
@@ -31,6 +32,7 @@ export default About;
 // Jestem miłośnikiem technologii i uwielbiam odkrywać świat technologii. (Wejście wewnatrz technolgicznego planety.)
 
 // Przeszedłem długą drogę rozwijąć się w tym swięcie i odkrywaniu nowych techlogi. (Tunel cząsteczek.)
+
 // W tym czasie nauczyłem się wiele intersujących technologi ale skupiłem się bardziej na WEB3 (Tunel i WEB3 na końcu)
 
 // CzyliA I, Blockchain, 3D, Cyberbezpieczeństwa (Wychodzące z web3 tekstu.)

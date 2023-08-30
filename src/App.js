@@ -18,7 +18,7 @@ function App() {
   const Routing = () => {
     switch (router) {
       case "ABOUT":
-        return <About setPersonRot={setPersonRot} />;
+        return <About router={router} setPersonRot={setPersonRot} />;
       default:
         return (
           <>
@@ -31,7 +31,7 @@ function App() {
 
   return (
     <>
-      <Hud setNav={(item) => setRouter(item)} />
+      <Hud router={router} setNav={(item) => setRouter(item)} />
       <Canvas
         style={{ width: "100vw", height: "100vh", background: "black" }}
         camera={{ position: [-3, 3, -3] }}
@@ -42,7 +42,7 @@ function App() {
         />
         <ambientLight intensity={1} />
         {Routing()}
-        <Person rotation={personRot} />
+        <Person rotation={personRot} router={router} />
         <Floor />
       </Canvas>
     </>

@@ -19,6 +19,7 @@ const Person = ({ rotation, router }) => {
     switch (router) {
       case "ABOUT":
         actions["Wave"].reset().play();
+        break;
       default:
         actions["Type"].reset().play();
     }

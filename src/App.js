@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
 import { Canvas } from "@react-three/fiber";
 import { OrbitControls } from "@react-three/drei";
 import * as THREE from "three";
@@ -10,14 +10,16 @@ import Lights from "./components/Lights";
 import Monitors from "./components/Monitor";
 import About from "./components/About";
 
+import { menu } from "./data/data";
+
 function App() {
-  const [targetCord, setTargetCord] = useState([0, 1.7, 0]);
+  const [targetCord] = useState([0, 1.7, 0]);
   const [personRot, setPersonRot] = useState([0, 0, 0]);
   const [router, setRouter] = useState("");
 
   const Routing = () => {
     switch (router) {
-      case "ABOUT":
+      case menu.ABOUT:
         return <About router={router} setPersonRot={setPersonRot} />;
       default:
         return (
@@ -36,14 +38,14 @@ function App() {
         style={{ width: "100vw", height: "100vh", background: "black" }}
         camera={{ position: [-3, 3, -3] }}
       >
+        {Routing()}
+        <Person rotation={personRot} router={router} />
+        <Floor />
+        <ambientLight intensity={1} />
         <OrbitControls
           target={targetCord}
           mouseButtons={{ LEFT: THREE.MOUSE.ROTATE, RIGHT: THREE.MOUSE.ROTATE }}
         />
-        <ambientLight intensity={1} />
-        {Routing()}
-        <Person rotation={personRot} router={router} />
-        <Floor />
       </Canvas>
     </>
   );

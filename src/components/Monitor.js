@@ -1,6 +1,6 @@
-import React, { useRef, useEffect } from "react";
-import { Box, useGLTF, useTexture } from "@react-three/drei";
-import { useFrame, useThree } from "@react-three/fiber";
+import React, { useEffect } from "react";
+import { Box, useTexture } from "@react-three/drei";
+import { useThree } from "@react-three/fiber";
 
 const Monitors = ({ setPersonRot }) => {
   const { camera } = useThree();
@@ -13,26 +13,6 @@ const Monitors = ({ setPersonRot }) => {
     setPersonRot([0, 0, 0]);
     camera.position.set(3, 3, -3);
   }, []);
-
-  let angle = 0;
-  let isMouseDown = false;
-  let lastMouseDown = Date.now();
-
-  window.addEventListener("mousedown", () => {
-    isMouseDown = true;
-    lastMouseDown = Date.now();
-  });
-  window.addEventListener("mouseup", () => {
-    isMouseDown = false;
-  });
-
-  useFrame(() => {
-    if (!isMouseDown && Date.now() - lastMouseDown > 15000) {
-      angle += 0.007;
-      camera.position.x = Math.cos(angle);
-      camera.position.z = Math.sin(angle);
-    }
-  });
 
   return (
     <>

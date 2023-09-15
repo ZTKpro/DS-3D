@@ -38,7 +38,6 @@ const StyledPorfolioWrapper = styled.div`
   max-height: 90.5vh;
   overflow-y: auto;
   padding: 20px;
-  justify-content: space-between;
 `;
 
 const StyledPorfolioItem = styled.div`
@@ -66,9 +65,17 @@ const StyledTagsSelect = styled.div`
   display: flex;
 `;
 
+const StyledInput = styled.input`
+  margin-right: 10px;
+  height: 28px;
+  background-color: #00000050;
+`;
+
 const Porfolio = ({ setNav }) => {
-  const [filteredPortfolio, setFilteredPortfolio] = useState(portfolio);
+  const [searchText, setSearchText] = useState("");
   const [selectedTags, setSelectedTags] = useState([]);
+  const [filteredPortfolio, setFilteredPortfolio] = useState(portfolio);
+
   const handleTagClick = (tag) => {
     if (selectedTags.includes(tag)) {
       setSelectedTags(selectedTags.filter((t) => t !== tag));
@@ -78,16 +85,30 @@ const Porfolio = ({ setNav }) => {
   };
 
   useEffect(() => {
-    const filteredPortfolioItems = portfolio.filter((item) => {
-      if (selectedTags.length === 0) {
-        return true;
-      } else {
-        return item.tags.some((tag) => selectedTags.includes(tag));
-      }
-    });
+    const filteredPortfolioItems = portfolio
+      .filter((item) => {
+        if (selectedTags.length === 0) {
+          return true;
+        } else {
+          return item.tags.some((tag) => selectedTags.includes(tag));
+        }
+      })
+      .filter((item) => {
+        if (!searchText) {
+          return true;
+        } else {
+          const nameMatches = item.name
+            .toLowerCase()
+            .includes(searchText.toLowerCase());
+          const describeMatches = item.describe
+            .toLowerCase()
+            .includes(searchText.toLowerCase());
+          return nameMatches || describeMatches;
+        }
+      });
 
     setFilteredPortfolio(filteredPortfolioItems);
-  }, [selectedTags]);
+  }, [selectedTags, searchText]);
 
   return (
     <StyledPorfolio className="section">
@@ -109,7 +130,11 @@ const Porfolio = ({ setNav }) => {
             </p>
           ))}
         </StyledTagsSelect>
-        <input placeholder="Search..." />
+        <StyledInput
+          className="active"
+          value={searchText}
+          onChange={(e) => setSearchText(e.target.value)}
+        />
       </StyledPorfolioNav>
       <StyledPorfolioWrapper>
         {filteredPortfolio.map((item) => (

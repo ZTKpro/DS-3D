@@ -19,7 +19,8 @@ const StyledPorfolioNav = styled.div`
   width: 100%;
   display: flex;
   align-items: center;
-
+  overflow-x: auto; 
+  
   p {
     margin: 0 25px;
     cursor: pointer;
@@ -30,6 +31,7 @@ const StyledPorfolioNav = styled.div`
     padding: 5px;
   }
 `;
+
 
 const StyledPorfolioWrapper = styled.div`
   display: flex;
@@ -44,7 +46,7 @@ const StyledPorfolioItem = styled.div`
   cursor: pointer;
   padding: 10px;
   border: 1px solid #4ef9fe80;
-  width: calc(33.33% - 20px);
+  width: 450px;
   box-sizing: border-box;
 
   img {

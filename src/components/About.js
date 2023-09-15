@@ -1,6 +1,5 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect } from "react";
 import { useFrame, useThree } from "@react-three/fiber";
-import * as THREE from "three";
 
 import Particles from "./Particles";
 
@@ -18,9 +17,11 @@ const About = ({ setPersonRot, router }) => {
     }
   });
 
-  return <>
-  <Particles />
-  </>;
+  return (
+    <>
+      <Particles />
+    </>
+  );
 };
 
 export default About;

@@ -5,9 +5,25 @@
   color: #4ef9fe;
   font-family: "Orbitron", sans-serif;
   font-size: 0.8rem;
-  text-shadow: -1px -1px #0696ff;
-  line-height: 0.8rem;
-  letter-spacing: 0.2rem;
+}
+
+::-webkit-scrollbar {
+  width: 4px;
+}
+
+::-webkit-scrollbar-track {
+  background-color: #333;
+}
+
+::-webkit-scrollbar-thumb {
+  background-color: #4ef8fec1;
+  border-radius: 4px;
+}
+
+.section {
+  background-color: #4ef9fe15;
+  border-top: 1px solid #4ef9fe80;
+  border-bottom: 1px solid #4ef9fe80;
 }
 
 .active {
@@ -15,5 +31,9 @@
 }
 
 .active:hover {
+  opacity: 1;
+}
+
+.selected {
   opacity: 1;
 }

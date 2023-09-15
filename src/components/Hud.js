@@ -31,15 +31,17 @@ const Hud = ({ setNav, router }) => {
   return (
     <>
       {router === menu.ABOUT && <About />}
-      {router === menu.PORTFOLIO && <Porfolio />}
+      {router === menu.PORTFOLIO && <Porfolio setNav={setNav} />}
 
-      <StyledNav>
-        {Object.entries(menu).map(([key, value], index) => (
-          <p key={index} onClick={() => setNav(value)}>
-            {value}
-          </p>
-        ))}
-      </StyledNav>
+      {router !== menu.PORTFOLIO && (
+        <StyledNav>
+          {Object.entries(menu).map(([key, value], index) => (
+            <p key={value} onClick={() => setNav(value)}>
+              {value}
+            </p>
+          ))}
+        </StyledNav>
+      )}
     </>
   );
 };

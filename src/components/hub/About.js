@@ -9,25 +9,18 @@ const StyledPersonInfo = styled.div`
   height: 95vh;
   width: 300px;
   padding: 40px;
-  background-color: #4ef9fe05;
-  border-top: 1px solid #4ef9fe20;
-  border-bottom: 1px solid #4ef9fe20;
 
   p {
     color: #4ef9fe;
     font-family: "Orbitron", sans-serif;
     font-size: 0.8rem;
-    text-shadow: -1px -1px #4ef9fe;
-    margin-bottom: 1rem;
-    line-height: 2rem;
-    text-transform: uppercase;
   }
 `;
 
 const Porfolio = ({ setNav }) => {
 
   return (
-    <StyledPersonInfo>
+    <StyledPersonInfo className="section">
       <h2>Personal Information</h2>
       <p>
         <strong>Name:</strong> Damian

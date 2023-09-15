@@ -5,6 +5,13 @@ const Person = ({ rotation, router }) => {
   const avatarRef = useRef();
 
   const avatar = useGLTF("assets/model/avatar.glb");
+
+  avatar.scene.children.forEach((element) => {
+    if (element.geometry) {
+      element.geometry.frustumCulled = false;
+    }
+  });
+
   const { animations } = useFBX("assets/model/texting.fbx");
   const { animations: waveAnimations } = useFBX("assets/model/wave.fbx");
 

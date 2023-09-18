@@ -1,6 +1,7 @@
 import SamsungImg from "../assets/porfolio/Samsung.jpg";
 import EdumatImg from "../assets/porfolio/Edumat.png";
 import HrkImg from "../assets/porfolio/Hrk.png";
+import DonotblinkImg from "../assets/porfolio/Donotblink.png";
 import LeadmeImg from "../assets/porfolio/Leadme.png";
 import WalletImg from "../assets/porfolio/Wallet.png";
 import SmartImg from "../assets/porfolio/Smart.png";
@@ -11,7 +12,6 @@ import EmotionImg from "../assets/porfolio/Emotion.png";
 import AssistantImg from "../assets/porfolio/Assistant.png";
 import AnimalImg from "../assets/porfolio/Animal.png";
 import ObjectImg from "../assets/porfolio/Object.png";
-
 
 const menu = {
   ABOUT: "about",
@@ -28,29 +28,6 @@ const portfolio = [
     tags: ["AR", "Samsung", "Rozszerzona rzeczywistość"],
     image: SamsungImg,
     url: "https://www.przejdznastronefoldow.pl/",
-  },
-  {
-    name: "Edumat",
-    describe:
-      "Edukacyjna platforma online oferująca szeroki zakres kursów i materiałów.",
-    tags: ["Edukacja", "Platforma", "Kursy"],
-    image: EdumatImg,
-    url: "https://edumat.pl/",
-  },
-  {
-    name: "HRK",
-    describe: "Innowacyjna platforma HR dedykowana dla firm i kandydatów.",
-    tags: ["HR", "Rekrutacja", "Praca"],
-    image: HrkImg,
-    url: "https://www.hrk.pl",
-  },
-  {
-    name: "leadme.ai",
-    describe:
-      "Zaawansowane narzędzie AI do generowania leadów i optymalizacji sprzedaży.",
-    tags: ["AI", "Leady", "Sprzedaż"],
-    image: LeadmeImg,
-    url: "https://www.leadme.ai",
   },
   {
     name: "Porfel cryptowalutowy",
@@ -118,6 +95,36 @@ const portfolio = [
     tags: ["AI", "Emocje", "Rozpoznawanie"],
     image: EmotionImg,
     url: "https://motion-detection-ds.netlify.app/",
+  },
+  {
+    name: "Edumat",
+    describe:
+      "Edukacyjna platforma online oferująca szeroki zakres kursów i materiałów.",
+    tags: ["Edukacja", "Platforma", "Kursy"],
+    image: EdumatImg,
+    url: "https://edumat.pl/",
+  },
+  {
+    name: "HRK",
+    describe: "Innowacyjna platforma HR dedykowana dla firm i kandydatów.",
+    tags: ["HR", "Rekrutacja", "Praca"],
+    image: HrkImg,
+    url: "https://www.hrk.pl",
+  },
+  {
+    name: "leadme.ai",
+    describe:
+      "Zaawansowane narzędzie AI do generowania leadów i optymalizacji sprzedaży.",
+    tags: ["AI", "Leady", "Sprzedaż"],
+    image: LeadmeImg,
+    url: "https://www.leadme.ai",
+  },
+  {
+    name: "donotblink",
+    describe: "Mini gra oparta na JavaScript",
+    tags: ["Game"],
+    image: DonotblinkImg,
+    url: "https://ds-donotblink.netlify.app/",
   },
 ];
 

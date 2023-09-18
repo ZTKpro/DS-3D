@@ -1,12 +1,17 @@
-import SamsungImg from "../assets/Samsung.jpg";
-import EdumatImg from "../assets/Edumat.png";
-import HrkImg from "../assets/Hrk.png";
-import LeadmeImg from "../assets/Leadme.png";
-import WalletImg from "../assets/Wallet.png";
-import SmartImg from "../assets/Smart.png";
-import ShoeImg from "../assets/Shoe.png";
-import MetaverseImg from "../assets/Metaverse.png";
-import DetectorImg from "../assets/Detector.png";
+import SamsungImg from "../assets/porfolio/Samsung.jpg";
+import EdumatImg from "../assets/porfolio/Edumat.png";
+import HrkImg from "../assets/porfolio/Hrk.png";
+import LeadmeImg from "../assets/porfolio/Leadme.png";
+import WalletImg from "../assets/porfolio/Wallet.png";
+import SmartImg from "../assets/porfolio/Smart.png";
+import ShoeImg from "../assets/porfolio/Shoe.png";
+import MetaverseImg from "../assets/porfolio/Metaverse.png";
+import SelfImg from "../assets/porfolio/Self.png";
+import EmotionImg from "../assets/porfolio/Emotion.png";
+import AssistantImg from "../assets/porfolio/Assistant.png";
+import AnimalImg from "../assets/porfolio/Animal.png";
+import ObjectImg from "../assets/porfolio/Object.png";
+
 
 const menu = {
   ABOUT: "about",
@@ -82,40 +87,36 @@ const portfolio = [
     name: "Wykrywacz obiektów na zdjęciach",
     describe: "Aplikacja AI do wykrywania obiektów na zdjęciach.",
     tags: ["AI", "Wykrywanie obiektów", "Zdjęcia"],
-    image: DetectorImg,
+    image: ObjectImg,
     url: "https://ds-code.netlify.app/ai/detector",
   },
   {
-    name: "Prosty asystent głosowy",
+    name: "AI asystent głosowy",
     describe: "Asystent głosowy obsługujący podstawowe zadania.",
     tags: ["AI", "Asystent głosowy", "Automatyzacja"],
-    image:
-      "https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Fwww.tapeciarnia.pl%2Ffotki%2Fd%2F26033_1537299778_6799.jpg&f=1&nofb=1&ipt=fdce78e65d826834ccbff8287a03545c9a76fa0af9dfe3b2540d7c20dcded2e5&ipo=images",
+    image: AssistantImg,
     url: "https://ds-code.netlify.app/ai/voice-assistant",
   },
   {
-    name: "Auto Car JS",
+    name: "Self-driving Car JavsScript",
     describe: "Gra komputerowa, która wykorzystuje ręcznie napisany model AI.",
     tags: ["Gra", "AI", "Rozrywka"],
-    image:
-      "https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Fwww.tapeciarnia.pl%2Ffotki%2Fd%2F26033_1537299778_6799.jpg&f=1&nofb=1&ipt=fdce78e65d826834ccbff8287a03545c9a76fa0af9dfe3b2540d7c20dcded2e5&ipo=images",
+    image: SelfImg,
     url: "https://car-network.netlify.app/",
   },
   {
-    name: "Classifier",
+    name: "Classification AI animal",
     describe:
       "Aplikacja wykorzystująca TensorFlow do klasyfikacji różnych obiektów.",
     tags: ["AI", "TensorFlow", "Klasyfikacja"],
-    image:
-      "https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Fwww.tapeciarnia.pl%2Ffotki%2Fd%2F26033_1537299778_6799.jpg&f=1&nofb=1&ipt=fdce78e65d826834ccbff8287a03545c9a76fa0af9dfe3b2540d7c20dcded2e5&ipo=images",
+    image: AnimalImg,
     url: "https://classifier-js-ds.netlify.app/",
   },
   {
-    name: "Motion Detection",
+    name: "Emotion Detection",
     describe: "Aplikacja wykorzystująca AI do rozpoznawania emocji.",
     tags: ["AI", "Emocje", "Rozpoznawanie"],
-    image:
-      "https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Fwww.tapeciarnia.pl%2Ffotki%2Fd%2F26033_1537299778_6799.jpg&f=1&nofb=1&ipt=fdce78e65d826834ccbff8287a03545c9a76fa0af9dfe3b2540d7c20dcded2e5&ipo=images",
+    image: EmotionImg,
     url: "https://motion-detection-ds.netlify.app/",
   },
 ];

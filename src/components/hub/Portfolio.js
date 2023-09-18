@@ -19,8 +19,8 @@ const StyledPorfolioNav = styled.div`
   width: 100%;
   display: flex;
   align-items: center;
-  overflow-x: auto; 
-  
+  overflow-x: auto;
+
   p {
     margin: 0 25px;
     cursor: pointer;
@@ -31,7 +31,6 @@ const StyledPorfolioNav = styled.div`
     padding: 5px;
   }
 `;
-
 
 const StyledPorfolioWrapper = styled.div`
   display: flex;
@@ -55,8 +54,13 @@ const StyledPorfolioItem = styled.div`
     object-fit: cover;
   }
 
-  p {
+  p,
+  h2 {
     padding: 10px;
+  }
+
+  h2{
+    font-size: 18px;
   }
 `;
 
@@ -140,16 +144,23 @@ const Porfolio = ({ setNav }) => {
       </StyledPorfolioNav>
       <StyledPorfolioWrapper>
         {filteredPortfolio.map((item) => (
-          <StyledPorfolioItem className="active" key={item.name}>
-            <img src={item.image} alt={item.name} />
-            <p>{item.name}</p>
-            <p>{item.describe}</p>
-            <StyledTags>
-              {item.tags.map((tag, index) => (
-                <p key={index}>{tag}</p>
-              ))}
-            </StyledTags>
-          </StyledPorfolioItem>
+          <a
+            href={item.url}
+            target="_blank"
+            rel="noopener noreferrer"
+            key={item.name}
+          >
+            <StyledPorfolioItem className="active">
+              <img src={item.image} alt={item.name} />
+              <h2>{item.name}</h2>
+              <p>{item.describe}</p>
+              <StyledTags>
+                {item.tags.map((tag, index) => (
+                  <p key={index}>{tag}</p>
+                ))}
+              </StyledTags>
+            </StyledPorfolioItem>
+          </a>
         ))}
       </StyledPorfolioWrapper>
     </StyledPorfolio>

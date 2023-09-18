@@ -43,13 +43,12 @@ const StyledPorfolioWrapper = styled.div`
 
 const StyledPorfolioItem = styled.div`
   cursor: pointer;
-  padding: 10px;
   border: 1px solid #4ef9fe80;
   width: 450px;
   box-sizing: border-box;
 
   img {
-    height: auto;
+    height: 200px;
     width: 100%;
     object-fit: cover;
   }

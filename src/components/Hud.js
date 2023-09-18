@@ -1,9 +1,12 @@
 import React from "react";
 import styled from "styled-components";
 
+import { menu } from "../data/data";
+
 import Porfolio from "./hub/Portfolio";
 import About from "./hub/About";
-import { menu } from "../data/data";
+import Contact from "./hub/Contact";
+import Dreams from "./hub/Dreams";
 
 const StyledNav = styled.nav`
   padding: 20px;
@@ -32,6 +35,8 @@ const Hud = ({ setNav, router }) => {
     <>
       {router === menu.ABOUT && <About />}
       {router === menu.PORTFOLIO && <Porfolio setNav={setNav} />}
+      {router === menu.CONTACT && <Contact setNav={setNav} />}
+      {router === menu.DREAMS && <Dreams setNav={setNav} />}
 
       {router !== menu.PORTFOLIO && (
         <StyledNav>

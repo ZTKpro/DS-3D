@@ -12,7 +12,7 @@ const About = ({ setPersonRot, router }) => {
   }, []);
 
   useFrame((state, delta) => {
-    if (camera.position.z > -1) {
+    if (camera.position.z > -2) {
       camera.position.z -= delta / 3;
     }
   });

@@ -1,8 +1,14 @@
+:root {
+  --main-color: #2ac8ff;
+  --main-color-80: #2ac8ff80;
+  --main-color-15: #2ac8ff15;
+}
+
 * {
   box-sizing: border-box;
   padding: 0;
   margin: 0;
-  color: #4ef9fe;
+  color: var(--main-color);
   font-family: "Orbitron", sans-serif;
   font-size: 0.8rem;
   text-decoration: none;
@@ -31,15 +37,15 @@ input {
   }
 
   ::-webkit-scrollbar-thumb {
-    background-color: #4ef8fec1;
+    background-color: var(--main-color-80);
     border-radius: 4px;
   }
 }
 
 .section {
-  background-color: #4ef9fe15;
-  border-top: 1px solid #4ef9fe80;
-  border-bottom: 1px solid #4ef9fe80;
+  background-color: var(--main-color-15);
+  border-top: 1px solid var(--main-color-80);
+  border-bottom: 1px solid var(--main-color-80);
 }
 
 .active {

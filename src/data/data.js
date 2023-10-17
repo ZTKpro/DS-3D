@@ -17,7 +17,6 @@ const menu = {
   ABOUT: "about",
   PORTFOLIO: "portfolio",
   CONTACT: "contact",
-  // DREAMS: "dreams",
 };
 
 const portfolio = [

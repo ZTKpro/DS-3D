@@ -1,5 +1,9 @@
 const translation = {
-  test: "en-testowanikpo",
+  menu: {
+    about: "about",
+    portfolio: "portfolio",
+    contact: "contact",
+  },
   about: {
     scan: "Scan",
     classification: "Classification  unit",

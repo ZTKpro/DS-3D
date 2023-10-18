@@ -1,4 +1,9 @@
 const translation = {
+  menu: {
+    about: "O mnie",
+    portfolio: "Portfolio",
+    contact: "Kontakt",
+  },
   about: {
     scan: "Skanowanie",
     classification: "Klastfikacja jednostki",

@@ -35,7 +35,7 @@ const StyledNav = styled.nav`
 
 const Hud = () => {
   const [router, setRouter] = useContext(RouterContext);
-  const { i18n } = useTranslation();
+  const { t, i18n } = useTranslation();
 
   const isPl = i18n.language === "pl";
 
@@ -58,7 +58,7 @@ const Hud = () => {
               onClick={() => setRouter(value)}
               className="font_main"
             >
-              {value}
+              {t(`menu.${value}`)}
             </p>
           ))}
 

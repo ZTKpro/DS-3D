@@ -1,4 +1,4 @@
-const translate = {
+const translation = {
   about: {
     scan: "Skanowanie",
     classification: "Klastfikacja jednostki",
@@ -34,4 +34,4 @@ const translate = {
   contact: "Kontakt",
 };
 
-export default translate;
+export default translation;

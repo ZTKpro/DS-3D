@@ -1,4 +1,4 @@
-import React, { useEffect, useRef } from "react";
+import React, { useEffect, useRef, useContext } from "react";
 import * as THREE from "three";
 import {
   useAnimations,
@@ -8,6 +8,9 @@ import {
   Box,
   useTexture,
 } from "@react-three/drei";
+
+import menu from "../../data/menu";
+import RouterContext from "../../context/Router";
 
 import Lights from "../Lights";
 
@@ -56,9 +59,9 @@ const Monitors = () => {
   );
 };
 
-const Main = ({ rotation, router }) => {
+const Main = ({ rotation }) => {
+  const [router] = useContext(RouterContext);
   const avatarRef = useRef();
-
   const avatar = useGLTF("assets/model/avatar.glb");
 
   avatar.scene.children.forEach((element) => {
@@ -79,17 +82,18 @@ const Main = ({ rotation, router }) => {
 
   useEffect(() => {
     switch (router) {
-      case "ABOUT":
+      case menu.ABOUT:
         actions["Wave"].reset().play();
         break;
       default:
         actions["Type"].reset().play();
     }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [router]);
 
   return (
     <>
-      <Monitors />
+      {router !== menu.ABOUT && <Monitors />}
       <Lights />
       <primitive ref={avatarRef} object={avatar.scene} rotation={rotation} />
       <Floor />

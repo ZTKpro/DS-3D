@@ -5,13 +5,13 @@ import en from "./data/translations/en";
 import pl from "./data/translations/pl";
 
 const resources = {
-  en: en,
-  pl: pl,
+  en: { translation: en },
+  pl: { translation: pl },
 };
 
 i18n.use(initReactI18next).init({
   resources,
-  lng: "en",
+  lng: "pl",
   interpolation: {
     escapeValue: false,
   },

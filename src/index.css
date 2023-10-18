@@ -1,7 +1,10 @@
 :root {
-  --main-color: #2ac8ff;
-  --main-color-80: #2ac8ff80;
-  --main-color-15: #2ac8ff15;
+  --main-color: #48d1d3;
+  --main-color-80: #48d1d380;
+  --main-color-15: #48d1d315;
+  --black-color-10: #00000010;
+  --green-color: #46d277;
+  --red-color: #d24946;
 }
 
 * {
@@ -9,7 +12,7 @@
   padding: 0;
   margin: 0;
   color: var(--main-color);
-  font-family: "Orbitron", sans-serif;
+  font-family: "Inter", sans-serif;
   font-size: 0.8rem;
   text-decoration: none;
 }
@@ -42,10 +45,17 @@ input {
   }
 }
 
+.font_red {
+  color: var(--green-red);
+}
+
+.font_green {
+  color: var(--green-color);
+}
+
 .section {
-  background-color: var(--main-color-15);
-  border-top: 1px solid var(--main-color-80);
-  border-bottom: 1px solid var(--main-color-80);
+  background-color: var(--black-color-10);
+  border: 2px solid var(--main-color);
 }
 
 .active {

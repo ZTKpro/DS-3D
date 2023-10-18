@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import { Canvas } from "@react-three/fiber";
 import { OrbitControls } from "@react-three/drei";
 import * as THREE from "three";
+import "./i18n";
 
 import menu from "./data/menu";
 import RouterContext from "./context/Router";

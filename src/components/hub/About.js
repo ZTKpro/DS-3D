@@ -10,7 +10,9 @@ const StyledPersonInfo = styled.div`
   top: 8vh;
   right: 5vh;
   width: 330px;
-  transform: skew(${(props) => props.skew || "-3deg"});
+  transform: perspective(1000px)
+    rotateZ(${(props) => props.rotationY || "0deg"})
+    rotateY(${(props) => props.rotationX || "0deg"});
 `;
 
 const StyledTop = styled.div`
@@ -94,7 +96,8 @@ const StyledContent = styled.div`
 
 const Portfolio = () => {
   const { t } = useTranslation();
-  const [skew, setSkew] = useState(3);
+  const [rotationX, setRotationX] = useState("0deg");
+  const [rotationY, setRotationY] = useState("0deg");
 
   useEffect(() => {
     const handleMouseMove = (event) => {
@@ -102,10 +105,10 @@ const Portfolio = () => {
       const y = event.clientY;
       const width = window.innerWidth;
       const height = window.innerHeight;
-      const newSkewX = ((width - x) / width) * 6 - 3;
-      const newSkewY = (y / height) * 6 - 3;
-      const newSkew = (newSkewX + newSkewY) / 2;
-      setSkew(newSkew);
+      const rotationXWindow = (x / width) * 20 - 15;
+      const rotationYWindow = ((y / height) * 4 - 2) * -1;
+      setRotationX(rotationXWindow);
+      setRotationY(rotationYWindow);
     };
 
     window.addEventListener("mousemove", handleMouseMove);
@@ -117,7 +120,10 @@ const Portfolio = () => {
 
   return (
     <>
-      <StyledPersonInfo skew={`${skew}deg`}>
+      <StyledPersonInfo
+        rotationX={`${rotationX}deg`}
+        rotationY={`${rotationY}deg`}
+      >
         <StyledTop>
           <h4>{t("about.scan")}</h4>
         </StyledTop>

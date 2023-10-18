@@ -7,7 +7,7 @@ const translation = {
     netrunner: "Netrunner",
     name: "Name",
     skill: "Skills",
-    Experience: "Doświadczenie",
+    experience: "Experience",
     info: "Informaction",
     about: {
       quality:

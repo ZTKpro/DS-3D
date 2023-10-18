@@ -44,7 +44,7 @@ const Hud = () => {
       {router !== menu.PORTFOLIO && (
         <StyledNav>
           {Object.entries(menu).map(([key, value], index) => (
-            <p key={value} onClick={() => setRouter(value)}>
+            <p key={value} onClick={() => setRouter(value)} className="font_main">
               {value}
             </p>
           ))}

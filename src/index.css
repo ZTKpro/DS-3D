@@ -11,7 +11,6 @@
   box-sizing: border-box;
   padding: 0;
   margin: 0;
-  color: var(--main-color);
   font-family: "Inter", sans-serif;
   font-size: 0.8rem;
   text-decoration: none;
@@ -45,8 +44,12 @@ input {
   }
 }
 
+.font_main {
+  color: var(--main-color);
+}
+
 .font_red {
-  color: var(--green-red);
+  color: var(--red-color);
 }
 
 .font_green {

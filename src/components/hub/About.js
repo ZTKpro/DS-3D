@@ -3,11 +3,17 @@ import styled from "styled-components";
 import { useTranslation } from "react-i18next";
 
 import HiroshiIcon from "../../assets/icons/hiroshi.svg";
+import JsIcon from "../../assets/icons/js.svg";
+import AiIcon from "../../assets/icons/ai.svg";
+import ChainIcon from "../../assets/icons/chain.svg";
+import PerspectiveIcon from "../../assets/icons/cube.svg";
+import HackIcon from "../../assets/icons/hack.svg";
+import CombatIcon from "../../assets/icons/combat.svg";
 
 const StyledPersonInfo = styled.div`
   z-index: 10;
   position: absolute;
-  top: 8vh;
+  top: 4vh;
   right: 5vh;
   width: 330px;
   transform: perspective(1000px)
@@ -61,7 +67,7 @@ const StyledMain = styled.div`
   border-left: 2px solid #48d1d3;
   border-bottom: 2px solid #48d1d3;
   border-right: 2px solid #48d1d3;
-  height: 500px;
+  height: max-content;
 `;
 
 const StyledHalfLine = styled.div`
@@ -83,14 +89,55 @@ const StyledContent = styled.div`
     font-size: 20px;
   }
 
-  h5 {
-    color: #d24946;
-  }
-
   span {
     opacity: 0.1;
     color: white;
     font-size: 20px;
+  }
+`;
+
+const StyledItemsWrapper = styled.div`
+  display: flex;
+`;
+
+const StyledItems = styled.div`
+  width: max-content;
+  margin: 10px 15px 10px 0;
+
+  p {
+    margin-top: 8px;
+  }
+
+  img {
+    height: 42px;
+    width: 42px;
+  }
+`;
+
+const StyledExperience = styled.div`
+  margin: 10px 0;
+  display: flex;
+`;
+
+const StyledLineBreak = styled.div`
+  width: 1px;
+  height: 55px;
+  background: linear-gradient(180deg, #2297be 0%, #48d1d3 48.02%, #2297be 100%);
+  margin: 0 8px;
+`;
+
+const StyledExperienceInside = styled.div`
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+`;
+
+const StyledAbout = styled.div`
+  margin: 10px 0;
+
+  p {
+    font-size: 12px;
+    margin: 12px 0;
   }
 `;
 
@@ -125,7 +172,7 @@ const Portfolio = () => {
         rotationY={`${rotationY}deg`}
       >
         <StyledTop>
-          <h4>{t("about.scan")}</h4>
+          <h4 className="font_main">{t("about.scan")}</h4>
         </StyledTop>
         <StyledMain>
           <StyledHalfLine />
@@ -134,6 +181,63 @@ const Portfolio = () => {
             <h4 className="font_green">
               {t("about.programmer")} <span> | {t("about.netrunner")} </span>
             </h4>
+            <h5 className="font_red">{t("about.name")}</h5>
+            <h4 className="font_main">Damian Szmurło</h4>
+            <h5 className="font_red">{t("about.skill")}</h5>
+            <StyledItemsWrapper>
+              <StyledItems>
+                <img src={JsIcon} alt="js icon" />
+                <p className="font_main"> JavaScript</p>
+              </StyledItems>
+              <StyledItems>
+                <img src={AiIcon} alt="ai icon" />
+                <p
+                  className="font_main"
+                  style={{ fontSize: "7px", marginTop: "11px" }}
+                >
+                  Artificial intelligence
+                </p>
+              </StyledItems>
+              <StyledItems>
+                <img src={ChainIcon} alt="blockchain icon" />
+                <p className="font_main">Blockchain</p>
+              </StyledItems>
+              <StyledItems>
+                <img src={PerspectiveIcon} alt="3d icon" />
+                <p className="font_main">3D</p>
+              </StyledItems>
+            </StyledItemsWrapper>
+            <h5 className="font_red">{t("about.experience")}</h5>
+            <StyledExperience>
+              <StyledExperienceInside>
+                <h5 className="font_main"> 2018 - 22</h5>
+                <h5 className="font_main"> 2018 - 23</h5>
+                <h5 className="font_main"> 2023 - now</h5>
+              </StyledExperienceInside>
+              <StyledLineBreak />
+              <StyledExperienceInside>
+                <h5 className="font_main"> Front end developer</h5>
+                <h5 className="font_main"> Full stack developer</h5>
+                <h5 className="font_main"> Web3 developer</h5>
+              </StyledExperienceInside>
+            </StyledExperience>
+            <h5 className="font_red">{t("about.info")}</h5>
+            <StyledAbout>
+              <p className="font_main"> {t("about.about.quality")}</p>
+              <p className="font_main"> {t("about.about.experience")}</p>
+              <p className="font_main"> {t("about.about.skill")}</p>
+            </StyledAbout>
+            <h5 className="font_red">{t("about.abilities")}</h5>
+            <StyledItemsWrapper>
+              <StyledItems>
+                <img src={CombatIcon} alt="combat icon" />
+                <p className="font_main"> Combat</p>
+              </StyledItems>
+              <StyledItems>
+                <img src={HackIcon} alt="hack icon" />
+                <p className="font_main"> Hacking</p>
+              </StyledItems>
+            </StyledItemsWrapper>
           </StyledContent>
         </StyledMain>
         <StyledHiroshiLogo src={HiroshiIcon} alt="Optical logo" />

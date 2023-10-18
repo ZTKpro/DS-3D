@@ -7,6 +7,10 @@
   --red-color: #d24946;
 }
 
+body {
+  overflow: hidden;
+}
+
 * {
   box-sizing: border-box;
   padding: 0;

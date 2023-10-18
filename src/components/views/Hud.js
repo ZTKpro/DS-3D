@@ -1,5 +1,6 @@
 import React, { useContext } from "react";
 import styled from "styled-components";
+import { useTranslation } from "react-i18next";
 
 import Porfolio from "../hub/Portfolio";
 import About from "../hub/About";
@@ -24,6 +25,7 @@ const StyledNav = styled.nav`
   p {
     margin: 0px 10px;
     cursor: pointer;
+    font-size: 15px;
 
     &:hover {
       opacity: 0.9;
@@ -33,6 +35,13 @@ const StyledNav = styled.nav`
 
 const Hud = () => {
   const [router, setRouter] = useContext(RouterContext);
+  const { i18n } = useTranslation();
+
+  const isPl = i18n.language === "pl";
+
+  const changeLanguage = (lng) => {
+    i18n.changeLanguage(lng);
+  };
 
   return (
     <>
@@ -44,10 +53,21 @@ const Hud = () => {
       {router !== menu.PORTFOLIO && (
         <StyledNav>
           {Object.entries(menu).map(([key, value], index) => (
-            <p key={value} onClick={() => setRouter(value)} className="font_main">
+            <p
+              key={value}
+              onClick={() => setRouter(value)}
+              className="font_main"
+            >
               {value}
             </p>
           ))}
+
+          <p
+            className="font_main"
+            onClick={() => changeLanguage(isPl ? "en" : "pl")}
+          >
+            {isPl ? "en" : "pl"}
+          </p>
         </StyledNav>
       )}
     </>

@@ -17,7 +17,7 @@ const StyledPersonInfo = styled.div`
   }
 `;
 
-const Connect = ({ setNav }) => {
+const Connect = ({ setRouter }) => {
   return (
     <StyledPersonInfo className="section">
       <h2>Connect</h2>

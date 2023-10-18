@@ -1,12 +1,13 @@
-import React from "react";
+import React, { useContext } from "react";
 import styled from "styled-components";
 
-import { menu } from "../data/data";
+import Porfolio from "../hub/Portfolio";
+import About from "../hub/About";
+import Contact from "../hub/Contact";
+import Dreams from "../hub/Dreams";
 
-import Porfolio from "./hub/Portfolio";
-import About from "./hub/About";
-import Contact from "./hub/Contact";
-import Dreams from "./hub/Dreams";
+import RouterContext from "../../context/Router";
+import menu from "../../data/menu";
 
 const StyledNav = styled.nav`
   padding: 20px;
@@ -30,18 +31,20 @@ const StyledNav = styled.nav`
   }
 `;
 
-const Hud = ({ setNav, router }) => {
+const Hud = () => {
+  const [router, setRouter] = useContext(RouterContext);
+
   return (
     <>
       {router === menu.ABOUT && <About />}
-      {router === menu.PORTFOLIO && <Porfolio setNav={setNav} />}
-      {router === menu.CONTACT && <Contact setNav={setNav} />}
-      {router === menu.DREAMS && <Dreams setNav={setNav} />}
+      {router === menu.PORTFOLIO && <Porfolio setRouter={setRouter} />}
+      {router === menu.CONTACT && <Contact setRouter={setRouter} />}
+      {router === menu.DREAMS && <Dreams setRouter={setRouter} />}
 
       {router !== menu.PORTFOLIO && (
         <StyledNav>
           {Object.entries(menu).map(([key, value], index) => (
-            <p key={value} onClick={() => setNav(value)}>
+            <p key={value} onClick={() => setRouter(value)}>
               {value}
             </p>
           ))}

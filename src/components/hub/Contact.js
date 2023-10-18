@@ -41,7 +41,7 @@ const StyledTextWrapper = styled.div`
   }
 `;
 
-const Contact = ({ setNav }) => {
+const Contact = ({ setRouter }) => {
   return (
     <StyledPersonInfo className="section">
       <StyledImgWrapper>

@@ -1,22 +1,9 @@
 import React, { useEffect } from "react";
 import { useFrame, useThree } from "@react-three/fiber";
 
-import Particles from "./Particles";
+import Particles from "../Particles";
 
-const About = ({ setPersonRot, router }) => {
-  const { camera } = useThree();
-
-  useEffect(() => {
-    setPersonRot([0, 3.12, 0]);
-    camera.position.set(0, 1.7, -0.5);
-  }, []);
-
-  useFrame((state, delta) => {
-    if (camera.position.z > -2) {
-      camera.position.z -= delta / 3;
-    }
-  });
-
+const About = () => {
   return (
     <>
       <Particles />

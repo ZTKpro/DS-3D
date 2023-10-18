@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import styled from "styled-components";
 
-import { portfolioFilter, portfolio } from "../../data/data";
+import { portfolioFilter, portfolio } from "../../data/portfolio";
 
 const StyledPorfolio = styled.div`
   position: absolute;
@@ -76,7 +76,7 @@ const StyledInput = styled.input`
   background-color: #00000050;
 `;
 
-const Porfolio = ({ setNav }) => {
+const Porfolio = ({ setRouter }) => {
   const [searchText, setSearchText] = useState("");
   const [selectedTags, setSelectedTags] = useState([]);
   const [filteredPortfolio, setFilteredPortfolio] = useState(portfolio);
@@ -119,7 +119,7 @@ const Porfolio = ({ setNav }) => {
     <StyledPorfolio className="section">
       <StyledPorfolioNav className="section">
         <StyledTagsSelect>
-          <p className="active" onClick={() => setNav("")}>
+          <p className="active" onClick={() => setRouter("")}>
             Back
           </p>
 

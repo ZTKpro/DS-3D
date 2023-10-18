@@ -3,51 +3,30 @@ import { Canvas } from "@react-three/fiber";
 import { OrbitControls } from "@react-three/drei";
 import * as THREE from "three";
 
-import Hud from "./components/Hud";
-import Person from "./components/Person";
-import Floor from "./components/Floor";
-import Lights from "./components/Lights";
-import Monitors from "./components/Monitor";
-import About from "./components/About";
+import menu from "./data/menu";
+import RouterContext from "./context/Router";
 
-import { menu } from "./data/data";
+import Hud from "./components/views/Hud";
+import Main from "./components/views/Main";
 
 function App() {
-  const [targetCord] = useState([0, 1.7, 0]);
-  const [personRot, setPersonRot] = useState([0, 0, 0]);
-  const [router, setRouter] = useState("");
-
-  const Routing = () => {
-    switch (router) {
-      case menu.ABOUT:
-        return <About router={router} setPersonRot={setPersonRot} />;
-      default:
-        return (
-          <>
-            <Monitors setPersonRot={setPersonRot} />
-            <Lights />
-          </>
-        );
-    }
-  };
+  const [router, setRouter] = useState(menu.ABOUT);
 
   return (
-    <>
-      <Hud router={router} setNav={(item) => setRouter(item)} />
+    <RouterContext.Provider value={[router, setRouter]}>
+      <Hud />
       <Canvas
         style={{ width: "100vw", height: "100vh", background: "black" }}
         camera={{ position: [-3, 3, -3] }}
       >
-        {Routing()}
-        <Person rotation={personRot} router={router} />
-        <Floor />
+        <Main />
         <ambientLight intensity={1} />
         <OrbitControls
-          target={targetCord}
+          target={[0, 1.7, 0]}
           mouseButtons={{ LEFT: THREE.MOUSE.ROTATE, RIGHT: THREE.MOUSE.ROTATE }}
         />
       </Canvas>
-    </>
+    </RouterContext.Provider>
   );
 }
 

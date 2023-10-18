@@ -1,4 +1,4 @@
-return {
+const translate = {
   about: {
     scan: "Scan",
     classification: "Classification  unit",
@@ -33,3 +33,4 @@ return {
   },
   contact: "Contact",
 };
+export default translate;

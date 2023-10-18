@@ -13,12 +13,6 @@ import AssistantImg from "../assets/porfolio/Assistant.png";
 import AnimalImg from "../assets/porfolio/Animal.png";
 import ObjectImg from "../assets/porfolio/Object.png";
 
-const menu = {
-  ABOUT: "about",
-  PORTFOLIO: "portfolio",
-  CONTACT: "contact",
-};
-
 const portfolio = [
   {
     name: "Samsunga AR",
@@ -129,4 +123,4 @@ const portfolio = [
 
 const portfolioFilter = ["AI", "Blockchain", "3D"];
 
-export { menu, portfolio, portfolioFilter };
+export { portfolio, portfolioFilter };

@@ -17,7 +17,7 @@ const StyledPersonInfo = styled.div`
   }
 `;
 
-const Porfolio = ({ setNav }) => {
+const Porfolio = ({ setRouter }) => {
 
   return (
     <StyledPersonInfo className="section">

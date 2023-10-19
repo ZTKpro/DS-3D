@@ -75,7 +75,7 @@ const StyledIcon = styled.img`
 
 const StyledSocial = styled.p`
   margin-left: 5px;
-  padding: 3px 5px;
+  padding: 4px 5px 3px 5px;
   font-size: 14px;
   width: 261px;
 `;
@@ -93,15 +93,21 @@ const Contact = () => {
           <img src={Prof} alt="profile img" />
         </StyledImg>
         <div>
-          <StyledSocialLinks href="sth">
+          <StyledSocialLinks
+            href="https://www.linkedin.com/in/dszmurlo/"
+            target="_blank"
+          >
             <StyledIcon src={linkedinIcon} />
             <StyledSocial className="font_main">Linkedin</StyledSocial>
           </StyledSocialLinks>
-          <StyledSocialLinks href="sth">
+          <StyledSocialLinks
+            href="mailto:damianszmurlowork@gmail.com"
+            target="_blank"
+          >
             <StyledIcon src={emailIcon} />
             <StyledSocial className="font_main">Email</StyledSocial>
           </StyledSocialLinks>
-          <StyledSocialLinks href="sth">
+          <StyledSocialLinks href="https://github.com/ZTKpro" target="_blank">
             <StyledIcon src={githubIcon} />
             <StyledSocial className="font_main">Github</StyledSocial>
           </StyledSocialLinks>

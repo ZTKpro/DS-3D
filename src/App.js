@@ -4,14 +4,13 @@ import { OrbitControls } from "@react-three/drei";
 import * as THREE from "three";
 import "./i18n";
 
-import menu from "./data/menu";
 import RouterContext from "./context/Router";
 
 import Hud from "./components/views/Hud";
 import Main from "./components/views/Main";
 
 function App() {
-  const [router, setRouter] = useState(menu.ABOUT);
+  const [router, setRouter] = useState(null);
 
   return (
     <RouterContext.Provider value={[router, setRouter]}>

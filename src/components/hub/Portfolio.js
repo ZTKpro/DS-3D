@@ -4,47 +4,59 @@ import styled from "styled-components";
 import { portfolioFilter, portfolio } from "../../data/portfolio";
 
 const StyledPorfolio = styled.div`
+  transform: translate(-50%, -50%) perspective(1000px)
+    rotateX(${(props) => props.rotationY || "1deg"})
+    rotateY(${(props) => props.rotationX || "1deg"});
   position: absolute;
   z-index: 10;
-  top: 1vh;
-  left: 0.5vw;
-  height: 98vh;
-  width: 98.5vw;
-  display: flex;
-  flex-direction: column;
+  top: 46.5%;
+  left: 50%;
+  color: var(--main-color);
 `;
 
 const StyledPorfolioNav = styled.div`
   height: 50px;
   width: 100%;
   display: flex;
+  overflow-x: hidden;
+`;
+
+const StyledSelector = styled.div`
+  display: flex;
   align-items: center;
-  overflow-x: auto;
+  justify-content: center;
+  border: 2px solid #48d1d3;
+  border-bottom: 2px solid
+    ${(props) => (props.active ? "transparent" : "#48d1d3")};
+  width: 180px;
+  border-radius: 1px;
+  cursor: pointer;
+  font-size: 16px;
+`;
 
-  p {
-    margin: 0 25px;
-    cursor: pointer;
-  }
-
-  input {
-    margin-left: auto;
-    padding: 5px;
-  }
+const StyledSelectorLine = styled.div`
+  border-bottom: 2px solid #48d1d3;
+  width: 100%;
 `;
 
 const StyledPorfolioWrapper = styled.div`
   display: flex;
   flex-wrap: wrap;
   gap: 20px;
-  max-height: 90.5vh;
+  min-height: 80vh;
+  max-height: 80vh;
+  min-width: 80vw;
+  max-width: max-content;
   overflow-y: auto;
   padding: 20px;
+  border: 2px solid var(--main-color);
+  border-top: none;
+  border-radius: 2px;
 `;
 
 const StyledPorfolioItem = styled.div`
   cursor: pointer;
   border: 1px solid #4ef9fe80;
-  width: 450px;
   box-sizing: border-box;
 
   img {
@@ -58,7 +70,7 @@ const StyledPorfolioItem = styled.div`
     padding: 10px;
   }
 
-  h2{
+  h2 {
     font-size: 18px;
   }
 `;
@@ -66,20 +78,12 @@ const StyledPorfolioItem = styled.div`
 const StyledTags = styled.div`
   display: flex;
 `;
-const StyledTagsSelect = styled.div`
-  display: flex;
-`;
-
-const StyledInput = styled.input`
-  margin-right: 10px;
-  height: 28px;
-  background-color: #00000050;
-`;
 
 const Porfolio = ({ setRouter }) => {
-  const [searchText, setSearchText] = useState("");
   const [selectedTags, setSelectedTags] = useState([]);
   const [filteredPortfolio, setFilteredPortfolio] = useState(portfolio);
+  const [rotationX, setRotationX] = useState("1deg");
+  const [rotationY, setRotationY] = useState("1deg");
 
   const handleTagClick = (tag) => {
     if (selectedTags.includes(tag)) {
@@ -90,56 +94,54 @@ const Porfolio = ({ setRouter }) => {
   };
 
   useEffect(() => {
-    const filteredPortfolioItems = portfolio
-      .filter((item) => {
-        if (selectedTags.length === 0) {
-          return true;
-        } else {
-          return item.tags.some((tag) => selectedTags.includes(tag));
-        }
-      })
-      .filter((item) => {
-        if (!searchText) {
-          return true;
-        } else {
-          const nameMatches = item.name
-            .toLowerCase()
-            .includes(searchText.toLowerCase());
-          const describeMatches = item.describe
-            .toLowerCase()
-            .includes(searchText.toLowerCase());
-          return nameMatches || describeMatches;
-        }
-      });
+    const handleMouseMove = (event) => {
+      const x = event.clientX;
+      const y = event.clientY;
+      const width = window.innerWidth;
+      const height = window.innerHeight;
+      const rotationXWindow = (x / width) * 0.5 - 0.25;
+      const rotationYWindow = ((y / height) * 2 - 1) * -1;
+      setRotationX(rotationXWindow);
+      setRotationY(rotationYWindow);
+    };
+
+    window.addEventListener("mousemove", handleMouseMove);
+
+    return () => {
+      window.removeEventListener("mousemove", handleMouseMove);
+    };
+  }, []);
+
+  useEffect(() => {
+    const filteredPortfolioItems = portfolio.filter((item) => {
+      if (selectedTags.length === 0) {
+        return true;
+      } else {
+        return item.tags.some((tag) => selectedTags.includes(tag));
+      }
+    });
 
     setFilteredPortfolio(filteredPortfolioItems);
-  }, [selectedTags, searchText]);
+  }, [selectedTags]);
 
   return (
-    <StyledPorfolio className="section">
-      <StyledPorfolioNav className="section">
-        <StyledTagsSelect>
-          <p className="active" onClick={() => setRouter("")}>
-            Back
-          </p>
+    <StyledPorfolio rotationX={`${rotationX}deg`} rotationY={`${rotationY}deg`}>
+      <StyledPorfolioNav>
+        <StyledSelector active={true} onClick={() => setRouter("")}>
+          Back
+        </StyledSelector>
 
-          {portfolioFilter.map((item) => (
-            <p
-              className={
-                selectedTags.includes(item) ? "active selected" : "active"
-              }
-              key={item}
-              onClick={() => handleTagClick(item)}
-            >
-              {item}
-            </p>
-          ))}
-        </StyledTagsSelect>
-        <StyledInput
-          className="active"
-          value={searchText}
-          onChange={(e) => setSearchText(e.target.value)}
-        />
+        {portfolioFilter.map((item) => (
+          <StyledSelector
+            active={selectedTags.includes(item)}
+            key={item}
+            onClick={() => handleTagClick(item)}
+          >
+            {item}
+          </StyledSelector>
+        ))}
+
+        <StyledSelectorLine />
       </StyledPorfolioNav>
       <StyledPorfolioWrapper>
         {filteredPortfolio.map((item) => (

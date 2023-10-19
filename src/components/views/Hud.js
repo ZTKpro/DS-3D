@@ -50,26 +50,26 @@ const Hud = () => {
       {router === menu.CONTACT && <Contact setRouter={setRouter} />}
       {router === menu.DREAMS && <Dreams setRouter={setRouter} />}
 
-      {router !== menu.PORTFOLIO && (
-        <StyledNav>
-          {Object.entries(menu).map(([key, value], index) => (
-            <p
-              key={value}
-              onClick={() => setRouter(value)}
-              className="font_main"
-            >
-              {t(`menu.${value}`)}
-            </p>
-          ))}
-
+      <StyledNav>
+        {Object.entries(menu).map(([key, value], index) => (
           <p
+            key={value}
+            onClick={() =>
+              router === value ? setRouter(null) : setRouter(value)
+            }
             className="font_main"
-            onClick={() => changeLanguage(isPl ? "en" : "pl")}
           >
-            {isPl ? "en" : "pl"}
+            {t(`menu.${value}`)}
           </p>
-        </StyledNav>
-      )}
+        ))}
+
+        <p
+          className="font_main"
+          onClick={() => changeLanguage(isPl ? "en" : "pl")}
+        >
+          {isPl ? "en" : "pl"}
+        </p>
+      </StyledNav>
     </>
   );
 };

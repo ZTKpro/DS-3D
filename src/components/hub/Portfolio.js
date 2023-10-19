@@ -9,13 +9,13 @@ const StyledPorfolio = styled.div`
     rotateY(${(props) => props.rotationX || "1deg"});
   position: absolute;
   z-index: 10;
-  top: 46.5%;
+  top: 47%;
   left: 50%;
   color: var(--main-color);
 `;
 
 const StyledPorfolioNav = styled.div`
-  height: 50px;
+  height: 45px;
   width: 100%;
   display: flex;
   overflow-x: hidden;
@@ -40,11 +40,8 @@ const StyledSelectorLine = styled.div`
 `;
 
 const StyledPorfolioWrapper = styled.div`
-  display: flex;
-  flex-wrap: wrap;
-  gap: 20px;
-  min-height: 80vh;
-  max-height: 80vh;
+  min-height: 82vh;
+  max-height: 82vh;
   min-width: 80vw;
   max-width: max-content;
   overflow-y: auto;
@@ -52,44 +49,60 @@ const StyledPorfolioWrapper = styled.div`
   border: 2px solid var(--main-color);
   border-top: none;
   border-radius: 2px;
+
+  a {
+    height: max-content;
+    width: max-content;
+    position: relative;
+  }
+`;
+
+const StyledPorfolioInside = styled.div`
+  display: flex;
+  flex-wrap: wrap;
+  gap: 20px;
+  justify-content: flex-start;
+  align-items: flex-start;
 `;
 
 const StyledPorfolioItem = styled.div`
+  position: relative;
   cursor: pointer;
   border: 1px solid #4ef9fe80;
   box-sizing: border-box;
+  max-width: 270px;
+  height: 180px;
+  overflow: hidden;
+  clip-path: polygon(0% 0%, 100% 0, 100% 75%, 85% 100%, 0% 100%);
 
   img {
-    height: 200px;
+    min-height: 100%;
     width: 100%;
-    object-fit: cover;
-  }
-
-  p,
-  h2 {
-    padding: 10px;
-  }
-
-  h2 {
-    font-size: 18px;
   }
 `;
 
-const StyledTags = styled.div`
-  display: flex;
+const StyledRankingLine = styled.div`
+  position: absolute;
+  bottom: 24px;
+  right: -32px;
+  height: 10px;
+  width: 48px;
+  background-color: var(--main-color);
+  transform: rotate(-48deg) translate(-50%, -50%);
+  clip-path: polygon(0% 0%, 100% 0, 100% 0%, 78% 100%, 16% 100%);
 `;
 
 const Porfolio = ({ setRouter }) => {
-  const [selectedTags, setSelectedTags] = useState([]);
+  const [selectedTag, setSelectedTag] = useState(null);
   const [filteredPortfolio, setFilteredPortfolio] = useState(portfolio);
   const [rotationX, setRotationX] = useState("1deg");
   const [rotationY, setRotationY] = useState("1deg");
 
   const handleTagClick = (tag) => {
-    if (selectedTags.includes(tag)) {
-      setSelectedTags(selectedTags.filter((t) => t !== tag));
+    if (selectedTag === tag) {
+      setSelectedTag(null);
     } else {
-      setSelectedTags([...selectedTags, tag]);
+      setSelectedTag(tag);
     }
   };
 
@@ -114,26 +127,24 @@ const Porfolio = ({ setRouter }) => {
 
   useEffect(() => {
     const filteredPortfolioItems = portfolio.filter((item) => {
-      if (selectedTags.length === 0) {
+      if (selectedTag === null) {
         return true;
       } else {
-        return item.tags.some((tag) => selectedTags.includes(tag));
+        return item.tags.some((tag) => selectedTag === tag);
       }
     });
 
     setFilteredPortfolio(filteredPortfolioItems);
-  }, [selectedTags]);
+  }, [selectedTag]);
 
   return (
     <StyledPorfolio rotationX={`${rotationX}deg`} rotationY={`${rotationY}deg`}>
       <StyledPorfolioNav>
-        <StyledSelector active={true} onClick={() => setRouter("")}>
-          Back
-        </StyledSelector>
+        <StyledSelector onClick={() => setRouter("")}>Back</StyledSelector>
 
         {portfolioFilter.map((item) => (
           <StyledSelector
-            active={selectedTags.includes(item)}
+            active={selectedTag === item}
             key={item}
             onClick={() => handleTagClick(item)}
           >
@@ -144,25 +155,21 @@ const Porfolio = ({ setRouter }) => {
         <StyledSelectorLine />
       </StyledPorfolioNav>
       <StyledPorfolioWrapper>
-        {filteredPortfolio.map((item) => (
-          <a
-            href={item.url}
-            target="_blank"
-            rel="noopener noreferrer"
-            key={item.name}
-          >
-            <StyledPorfolioItem className="active">
-              <img src={item.image} alt={item.name} />
-              <h2>{item.name}</h2>
-              <p>{item.describe}</p>
-              <StyledTags>
-                {item.tags.map((tag, index) => (
-                  <p key={index}>{tag}</p>
-                ))}
-              </StyledTags>
-            </StyledPorfolioItem>
-          </a>
-        ))}
+        <StyledPorfolioInside>
+          {filteredPortfolio.map((item) => (
+            <a
+              href={item.url}
+              target="_blank"
+              rel="noopener noreferrer"
+              key={item.name}
+            >
+              <StyledPorfolioItem className="active">
+                <img src={item.image} alt={item.name} />
+              </StyledPorfolioItem>
+              <StyledRankingLine />
+            </a>
+          ))}
+        </StyledPorfolioInside>
       </StyledPorfolioWrapper>
     </StyledPorfolio>
   );

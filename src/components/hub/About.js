@@ -152,8 +152,8 @@ const Portfolio = () => {
       const y = event.clientY;
       const width = window.innerWidth;
       const height = window.innerHeight;
-      const rotationXWindow = (x / width) * 20 - 15;
-      const rotationYWindow = ((y / height) * 4 - 2) * -1;
+      const rotationXWindow = (x / width) * 15 - 10;
+      const rotationYWindow = ((y / height) * 2 - 1) * -1;
       setRotationX(rotationXWindow);
       setRotationY(rotationYWindow);
     };

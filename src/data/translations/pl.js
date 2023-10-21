@@ -30,7 +30,7 @@ const translation = {
   porfolio: {
     name: "Nazwa",
     description: "Opis",
-    tech: "Technologia",
+    tech: "Tech",
     items: [
       {
         name: "Object detector",

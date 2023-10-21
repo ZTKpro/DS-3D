@@ -1,16 +1,18 @@
 import React, { useEffect, useState } from "react";
 import styled from "styled-components";
+import { useTranslation } from "react-i18next";
 
 import { portfolioFilter, portfolio } from "../../data/portfolio";
 
 const StyledPorfolio = styled.div`
-  transform: translate(-50%, -50%) perspective(1000px)
+  transform: perspective(1000px)
     rotateX(${(props) => props.rotationY || "1deg"})
     rotateY(${(props) => props.rotationX || "1deg"});
   position: absolute;
   z-index: 10;
-  top: 47%;
-  left: 50%;
+  top: 3vh;
+  left: 10vw;
+  width: 80vw;
   color: var(--main-color);
 `;
 
@@ -92,11 +94,40 @@ const StyledRankingLine = styled.div`
   clip-path: polygon(0% 0%, 100% 0, 100% 0%, 78% 100%, 16% 100%);
 `;
 
+const StyledTooltip = styled.div`
+  position: absolute;
+  border: 1px solid red;
+  top: ${(props) => `${props.top}px`};
+  left: ${(props) => `${props.left - 140}px`};
+  width: 235px;
+  height: min-content;
+  border: 1px solid var(--main-color);
+  background: rgba(0, 0, 0, 0.5);
+`;
+
+const StyledTooltipLabel = styled.div`
+  height: 10px;
+  width: 100%;
+  background-color: ${(props) => `var(${props.color})`};
+`;
+
+const StyledTooltipMain = styled.div`
+  padding: 10px;
+
+  h4 {
+    font-size: 18px;
+  }
+`;
+
 const Porfolio = ({ setRouter }) => {
+  const { t } = useTranslation();
+
   const [selectedTag, setSelectedTag] = useState(null);
+  const [mousePosition, setMousePosition] = useState({ x: 0, y: 0 });
   const [filteredPortfolio, setFilteredPortfolio] = useState(portfolio);
   const [rotationX, setRotationX] = useState("1deg");
   const [rotationY, setRotationY] = useState("1deg");
+  const [tooltipData, setTooltipData] = useState({});
 
   const handleTagClick = (tag) => {
     if (selectedTag === tag) {
@@ -116,6 +147,8 @@ const Porfolio = ({ setRouter }) => {
       const rotationYWindow = ((y / height) * 2 - 1) * -1;
       setRotationX(rotationXWindow);
       setRotationY(rotationYWindow);
+
+      setMousePosition({ x, y });
     };
 
     window.addEventListener("mousemove", handleMouseMove);
@@ -163,7 +196,8 @@ const Porfolio = ({ setRouter }) => {
               href={item.url}
               target="_blank"
               rel="noopener noreferrer"
-              key={item.name}
+              key={item.url}
+              onMouseOver={() => setTooltipData(item)}
             >
               <StyledPorfolioItem className="active">
                 <img src={item.image} alt={item.name} />
@@ -173,6 +207,17 @@ const Porfolio = ({ setRouter }) => {
           ))}
         </StyledPorfolioInside>
       </StyledPorfolioWrapper>
+      <StyledTooltip top={mousePosition.y} left={mousePosition.x}>
+        <StyledTooltipLabel color={labelColors[tooltipData.label]} />
+        <StyledTooltipMain>
+          <h5 className="font_red">{t("porfolio.name")}</h5>
+          <h4>{t(`${tooltipData.name}.name`)}</h4>
+          <h5 className="font_red">{t("porfolio.description")}</h5>
+          <h4>{t(`${tooltipData.name}.describe`)}</h4>
+
+          <h5 className="font_red">{t("porfolio.tech")}</h5>
+        </StyledTooltipMain>
+      </StyledTooltip>
     </StyledPorfolio>
   );
 };

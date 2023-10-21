@@ -12,6 +12,9 @@ import EmotionImg from "../assets/porfolio/Emotion.png";
 import AssistantImg from "../assets/porfolio/Assistant.png";
 import AnimalImg from "../assets/porfolio/Animal.png";
 import ObjectImg from "../assets/porfolio/Object.png";
+import HoroskopImg from "../assets/porfolio/horoskop.png";
+import LotImg from "../assets/porfolio/lot.png";
+import PekeoImg from "../assets/porfolio/pekeo.png";
 
 const portfolio_pl = {
   samsung: {
@@ -77,6 +80,18 @@ const portfolio_pl = {
     name: "HRK",
     describe: "Innowacyjna platforma HR dedykowana dla firm i kandydatów.",
   },
+  horoskop: {
+    name: "Horoscope New York",
+    describe: "Efekt VR dla Lens that",
+  },
+  lot: {
+    name: "LOT Polish Airlines",
+    describe: "Efekt VR dla LOT Polish Airlines",
+  },
+  pekeo: {
+    name: "Pekeo",
+    describe: "Efekt VR dla PEKEO",
+  },
 };
 
 const portfolio_en = {
@@ -140,6 +155,18 @@ const portfolio_en = {
     name: "HRK",
     describe: "Innovative HR platform dedicated to companies and candidates.",
   },
+  horoskop: {
+    name: "Horoscope New York",
+    describe: "VR for Lens that",
+  },
+  lot: {
+    name: "LOT Polish Airlines",
+    describe: "VR for LOT Polish Airlines",
+  },
+  pekeo: {
+    name: "pekeo",
+    describe: "VR for PEKEO",
+  },
 };
 
 const portfolio = [
@@ -147,7 +174,7 @@ const portfolio = [
     name: "samsung",
     tags: ["AR", "3D"],
     image: SamsungImg,
-    url: "https://www.przejdznastronefoldow.pl/",
+    url: "https://www.youtube.com/watch?v=9rQ8pgYKtBY",
     label: 0,
   },
   {
@@ -235,12 +262,32 @@ const portfolio = [
     url: "https://motion-detection-ds.netlify.app/",
     label: 2,
   },
-
   {
     name: "hrk",
     tags: ["JavaScript"],
     image: HrkImg,
     url: "https://www.hrk.pl",
+    label: 2,
+  },
+  {
+    name: "horoscope",
+    tags: ["3D"],
+    image: HoroskopImg,
+    url: "#",
+    label: 2,
+  },
+  {
+    name: "lot",
+    tags: ["3D"],
+    image: LotImg,
+    url: "#",
+    label: 2,
+  },
+  {
+    name: "pekeo",
+    tags: ["3D"],
+    image: PekeoImg,
+    url: "#",
     label: 2,
   },
 ];

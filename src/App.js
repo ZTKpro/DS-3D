@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import { Helmet } from "react-helmet";
 import { Canvas } from "@react-three/fiber";
 import { OrbitControls } from "@react-three/drei";
 import * as THREE from "three";
@@ -9,11 +10,22 @@ import RouterContext from "./context/Router";
 import Hud from "./components/views/Hud";
 import Main from "./components/views/Main";
 
+const SEO = () => {
+  return (
+    <Helmet>
+      <title>DS website</title>
+      <meta name="description" content="Damian Szmurło programmer" />
+      <link rel="icon" type="image/png" href="./favicon.ico" sizes="16x16" />
+    </Helmet>
+  );
+};
+
 function App() {
   const [router, setRouter] = useState(null);
 
   return (
     <RouterContext.Provider value={[router, setRouter]}>
+      <SEO />
       <Hud />
       <Canvas
         style={{ width: "100vw", height: "100vh", background: "black" }}

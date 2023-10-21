@@ -72,14 +72,16 @@ const StyledPorfolioItem = styled.div`
   cursor: pointer;
   border: 1px solid #4ef9fe80;
   box-sizing: border-box;
-  max-width: 270px;
+  width: 270px;
   height: 180px;
   overflow: hidden;
   clip-path: polygon(0% 0%, 100% 0, 100% 75%, 85% 100%, 0% 100%);
 
   img {
-    min-height: 100%;
+    object-fit: cover;
+    object-position: center;
     width: 100%;
+    height: 100%;
   }
 `;
 
@@ -102,7 +104,8 @@ const StyledTooltip = styled.div`
   width: 235px;
   height: min-content;
   border: 1px solid var(--main-color);
-  background: rgba(0, 0, 0, 0.5);
+  background: rgba(0, 0, 0, 0.8);
+  display: ${(props) => (props.show ? "block" : "none")};
 `;
 
 const StyledTooltipLabel = styled.div`
@@ -115,13 +118,15 @@ const StyledTooltipMain = styled.div`
   padding: 10px;
 
   h4 {
-    font-size: 18px;
+    font-size: 16px;
+    margin: 5px 0;
   }
 `;
 
 const Porfolio = ({ setRouter }) => {
   const { t } = useTranslation();
 
+  const [showTooltip, setShowTooltip] = useState(false);
   const [selectedTag, setSelectedTag] = useState(null);
   const [mousePosition, setMousePosition] = useState({ x: 0, y: 0 });
   const [filteredPortfolio, setFilteredPortfolio] = useState(portfolio);
@@ -198,6 +203,8 @@ const Porfolio = ({ setRouter }) => {
               rel="noopener noreferrer"
               key={item.url}
               onMouseOver={() => setTooltipData(item)}
+              onMouseEnter={() => setShowTooltip(true)}
+              onMouseLeave={() => setShowTooltip(false)}
             >
               <StyledPorfolioItem className="active">
                 <img src={item.image} alt={item.name} />
@@ -207,15 +214,17 @@ const Porfolio = ({ setRouter }) => {
           ))}
         </StyledPorfolioInside>
       </StyledPorfolioWrapper>
-      <StyledTooltip top={mousePosition.y} left={mousePosition.x}>
+      <StyledTooltip
+        top={mousePosition.y}
+        left={mousePosition.x}
+        show={showTooltip}
+      >
         <StyledTooltipLabel color={labelColors[tooltipData.label]} />
         <StyledTooltipMain>
           <h5 className="font_red">{t("porfolio.name")}</h5>
           <h4>{t(`${tooltipData.name}.name`)}</h4>
           <h5 className="font_red">{t("porfolio.description")}</h5>
           <h4>{t(`${tooltipData.name}.describe`)}</h4>
-
-          <h5 className="font_red">{t("porfolio.tech")}</h5>
         </StyledTooltipMain>
       </StyledTooltip>
     </StyledPorfolio>

@@ -15,7 +15,6 @@ const SEO = () => {
     <Helmet>
       <title>DS website</title>
       <meta name="description" content="Damian Szmurło programmer" />
-      <link rel="icon" type="image/png" href="./favicon.ico" sizes="16x16" />
     </Helmet>
   );
 };

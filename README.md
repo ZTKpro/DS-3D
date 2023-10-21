@@ -29,13 +29,4 @@ Your app is ready to be deployed!
 
 See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
 
-
-# Plan:
-
-- [ ] Animation on about zoom out,photo timeline, small team, big team
-
-- [ ] Porfolio or 2d 3d - maka a plan
-
-- [ ] Dreams
-
-- [ ] contact
+# Folder data to quickly change data

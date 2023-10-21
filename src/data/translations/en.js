@@ -1,4 +1,7 @@
+import { portfolio_en } from "../portfolio";
+
 const translation = {
+  ...portfolio_en,
   menu: {
     about: "about",
     portfolio: "portfolio",

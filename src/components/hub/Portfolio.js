@@ -87,7 +87,7 @@ const StyledRankingLine = styled.div`
   right: -32px;
   height: 10px;
   width: 48px;
-  background-color: var(--main-color);
+  background-color: ${(props) => `var(${props.color})`};
   transform: rotate(-48deg) translate(-50%, -50%);
   clip-path: polygon(0% 0%, 100% 0, 100% 0%, 78% 100%, 16% 100%);
 `;
@@ -137,6 +137,8 @@ const Porfolio = ({ setRouter }) => {
     setFilteredPortfolio(filteredPortfolioItems);
   }, [selectedTag]);
 
+  const labelColors = [`--gold-color`, `--purple-color`, `--blue-color`];
+
   return (
     <StyledPorfolio rotationX={`${rotationX}deg`} rotationY={`${rotationY}deg`}>
       <StyledPorfolioNav>
@@ -166,7 +168,7 @@ const Porfolio = ({ setRouter }) => {
               <StyledPorfolioItem className="active">
                 <img src={item.image} alt={item.name} />
               </StyledPorfolioItem>
-              <StyledRankingLine />
+              <StyledRankingLine color={labelColors[item.label]} />
             </a>
           ))}
         </StyledPorfolioInside>

@@ -28,6 +28,7 @@ const translation = {
     hacking: "Hacking",
   },
   porfolio: {
+    back: "Zamknij",
     name: "Nazwa",
     description: "Opis",
     tech: "Tech",

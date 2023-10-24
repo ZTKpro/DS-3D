@@ -164,12 +164,13 @@ const Porfolio = ({ setRouter }) => {
   }, []);
 
   useEffect(() => {
-    const filteredPortfolioItems = portfolio.filter((item) => {
-      if (selectedTag === null) {
-        return true;
-      } else {
-        return item.tags.some((tag) => selectedTag === tag);
-      }
+    if (selectedTag === null) {
+      return setFilteredPortfolio(portfolio);
+    }
+
+    let filteredPortfolioItems = portfolio.filter((item) => {
+      console.log(item.tags);
+      return item.tags.includes(selectedTag);
     });
 
     setFilteredPortfolio(filteredPortfolioItems);
@@ -180,7 +181,9 @@ const Porfolio = ({ setRouter }) => {
   return (
     <StyledPorfolio rotationX={`${rotationX}deg`} rotationY={`${rotationY}deg`}>
       <StyledPorfolioNav>
-        <StyledSelector onClick={() => setRouter("")}>Back</StyledSelector>
+        <StyledSelector onClick={() => setRouter("")}>
+          {t("porfolio.back")}
+        </StyledSelector>
 
         {portfolioFilter.map((item) => (
           <StyledSelector

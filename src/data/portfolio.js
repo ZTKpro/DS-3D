@@ -20,7 +20,7 @@ const portfolio_pl = {
   samsung: {
     name: "Samsunga AR",
     describe:
-      "Aplikacja rzeczywistości rozszerzonej (AR) dedykowana dla urządzeń Samsung.",
+      "Aplikacja rzeczywistości rozszerzonej (AR) stworzona dla firmy Samsung.",
   },
   selfDrivingCar: {
     name: "Self-driving Car JavsScript",
@@ -155,7 +155,7 @@ const portfolio_en = {
     name: "HRK",
     describe: "Innovative HR platform dedicated to companies and candidates.",
   },
-  horoskop: {
+  horoscope: {
     name: "Horoscope New York",
     describe: "VR for Lens that",
   },
@@ -273,21 +273,21 @@ const portfolio = [
     name: "horoscope",
     tags: ["3D"],
     image: HoroskopImg,
-    url: "#",
+    url: "#1",
     label: 2,
   },
   {
     name: "lot",
     tags: ["3D"],
     image: LotImg,
-    url: "#",
+    url: "#2",
     label: 2,
   },
   {
     name: "pekeo",
     tags: ["3D"],
     image: PekeoImg,
-    url: "#",
+    url: "#3",
     label: 2,
   },
 ];

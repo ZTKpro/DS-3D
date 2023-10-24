@@ -95,6 +95,12 @@ const Main = ({ rotation }) => {
     <>
       {router !== menu.ABOUT && <Monitors />}
       <Lights />
+      <directionalLight
+        color="red"
+        intensity={2}
+        position={[-5, 5, 0]}
+        target={avatarRef.current}
+      />
       <primitive ref={avatarRef} object={avatar.scene} rotation={rotation} />
       <Floor />
     </>

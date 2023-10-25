@@ -97,9 +97,15 @@ const Main = ({ rotation }) => {
       <Lights />
       <directionalLight
         color="red"
-        intensity={2}
-        position={[-5, 5, 0]}
-        target={avatarRef.current}
+        intensity={3}
+        position={[-1, 0, 0.5]}
+        lookAt={[0, -1.8, 0]}
+      />
+      <directionalLight
+        color="blue"
+        intensity={3}
+        position={[1, 0, 0.5]}
+        lookAt={[0, -1.8, 0]}
       />
       <primitive ref={avatarRef} object={avatar.scene} rotation={rotation} />
       <Floor />

@@ -15,6 +15,7 @@ const SEO = () => {
     <Helmet>
       <title>DS website</title>
       <meta name="description" content="Damian Szmurło programmer" />
+      <meta name="freelancehunt" content="9ff8737d45dfa8d" />
     </Helmet>
   );
 };

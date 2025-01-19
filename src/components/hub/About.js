@@ -141,6 +141,10 @@ const StyledAbout = styled.div`
   }
 `;
 
+const StyledLink = styled.a`
+  opacity: 0.1;
+`;
+
 const Portfolio = () => {
   const { t } = useTranslation();
   const [rotationX, setRotationX] = useState("0deg");
@@ -241,12 +245,14 @@ const Portfolio = () => {
           </StyledContent>
         </StyledMain>
         <StyledHiroshiLogo src={HiroshiIcon} alt="Optical logo" />
-           <a 
-              href="https://dswebsite.webflow.io/" 
-              style="opacity:0.1"
-            >
-              https://dswebsite.webflow.io/
-            </a>
+        <StyledLink 
+                href="https://dswebsite.webflow.io/" 
+                target="_blank" 
+                rel="noopener noreferrer"
+                className="font_main"
+              >
+                dswebsite.webflow.io
+        </StyledLink>
       </StyledPersonInfo>
     </>
   );

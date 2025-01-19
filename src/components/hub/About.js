@@ -247,9 +247,6 @@ const Portfolio = () => {
         <StyledHiroshiLogo src={HiroshiIcon} alt="Optical logo" />
         <StyledLink 
                 href="https://dswebsite.webflow.io/" 
-                target="_blank" 
-                rel="noopener noreferrer"
-                className="font_main"
               >
                 dswebsite.webflow.io
         </StyledLink>
